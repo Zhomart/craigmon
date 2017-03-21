@@ -5,6 +5,8 @@ module CraigMon
 
     getter xml : XML::Node
 
+    alias Value = Hash(String, String)
+
     def initialize(@xml : XML::Node)
     end
 
@@ -12,11 +14,11 @@ module CraigMon
       self.new(XML.parse(doc))
     end
 
-    def craigslist_items
-      items = [] of Hash(String, String)
+    def craigslist_items : Array(Value)
+      items = [] of Value
       xml.children[0].children.each do |item|
         next if item.name != "item"
-        value = {} of String => String
+        value = Value.new
         item.children.each do |c|
           next if c.name == "text"
           value[c.name] = c.text
