@@ -4,8 +4,13 @@ version: 0.1.0
 authors:
   - Zhomart Mukhamejanov <mzhomart@gmail.com>
 
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+    branch: master
+
 targets:
-  craig_mon:
+  craigmon:
     main: src/craig_mon.cr
 
 crystal: 0.21.1

@@ -2,6 +2,17 @@
 
 Monitors craigslist items.
 
+## Features
+
+- Web UI
+- Worker that fetches data from craigslist
+
+## TODO
+
+- [ ] UI: Accept a craigslist search url to process and store in DB
+- [ ] Worker: Download url from craigslist every N seconds and store results in DB
+- [ ] UI: Show results
+
 ## Installation
 
 TODO: Write installation instructions here
@@ -12,7 +23,7 @@ TODO: Write usage instructions here
 
 ## Development
 
-TODO: Write development instructions here
+**Building** `$ make build`
 
 ## Contributing
 
