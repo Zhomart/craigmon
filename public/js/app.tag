@@ -15,7 +15,7 @@
   </div>
 
   <script>
-    this.url = "https://sfbay.craigslist.org/search/vga"
+    this.url = null
 
     updateUrlValue(e) {
       this.url = e.target.value
@@ -25,12 +25,23 @@
       e.preventDefault()
       nanoajax.ajax({
         url:'/api/url',
-        method: "PATCH"
+        method: "PATCH",
+        body: `url=${this.url}`,
       }, (code, res) => {
         console.log(code)
         console.log(res)
       })
     }
+
+    this.on("before-mount", () => {
+      nanoajax.ajax({
+        url:'/api/url',
+      }, (code, res) => {
+        console.log("getting url from server")
+        this.url = JSON.parse(res).url
+        this.update()
+      })
+    })
 
   </script>
 </app>

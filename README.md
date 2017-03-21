@@ -9,7 +9,7 @@ Monitors craigslist items.
 
 ## TODO
 
-- [ ] UI: Accept a craigslist search url to process and store in DB
+- [x] UI: Accept a craigslist search url to process and store in DB
 - [ ] Worker: Download url from craigslist every N seconds and store results in DB
 - [ ] UI: Show results
 
