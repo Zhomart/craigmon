@@ -26,7 +26,7 @@
       nanoajax.ajax({
         url:'/api/url',
         method: "PATCH",
-        body: `url=${this.url}`,
+        body: `url=${encodeURIComponent(this.url)}`,
       }, (code, res) => {
         console.log(code)
         console.log(res)

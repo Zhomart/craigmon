@@ -13,7 +13,7 @@ dependencies:
 
 targets:
   craigmon:
-    main: src/craig_mon.cr
+    main: src/boot.cr
 
 crystal: 0.21.1
 

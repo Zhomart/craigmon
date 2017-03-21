@@ -11,6 +11,7 @@ Monitors craigslist items.
 
 - [x] UI: Accept a craigslist search url to process and store in DB
 - [ ] Worker: Download url from craigslist every N seconds and store results in DB
+- [ ] Worker: crawl all pages
 - [ ] UI: Show results
 
 ## Installation

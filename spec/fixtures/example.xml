@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:enc="http://purl.oclc.org/net/rss_2.0/enc#" xmlns:ev="http://purl.org/rss/1.0/modules/event/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:syn="http://purl.org/rss/1.0/modules/syndication/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:admin="http://webns.net/mvcb/">
+  <channel rdf:about="https://sfbay.craigslist.org/search/vga?format=rss&#x26;max_price=300&#x26;min_price=39">
+    <title>craigslist SF bay area | video gaming search </title>
+    <link>https://sfbay.craigslist.org/search/vga?max_price=300&#x26;min_price=39</link>
+    <description>
+    </description>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:publisher>robot@craigslist.org</dc:publisher>
+    <dc:creator>robot@craigslist.org</dc:creator>
+    <dc:source>https://sfbay.craigslist.org/search/vga?format=rss&#x26;max_price=300&#x26;min_price=39</dc:source>
+    <dc:title>craigslist SF bay area | video gaming search </dc:title>
+    <dc:type>Collection</dc:type>
+    <syn:updateBase>2017-03-20T20:18:13-07:00</syn:updateBase>
+    <syn:updateFrequency>6</syn:updateFrequency>
+    <syn:updatePeriod>hourly</syn:updatePeriod>
+    <items>
+      <rdf:Seq>
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/scz/vgm/6024913562.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/nby/vgm/6053023760.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/eby/vgm/6016742343.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/eby/vgm/6053017867.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/sby/vgm/6053017714.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/sfc/vgm/6053017507.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/sby/vgm/6053016081.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/eby/vgm/6053000978.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/sfc/vgm/6027053932.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/sby/vgm/6052895292.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/sby/vgm/6052976477.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/scz/vgm/6052990030.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/eby/vgm/6028654728.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/nby/vgm/6020506032.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/sby/vgm/6052965737.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/sfc/vgm/6052963452.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/sfc/vgm/6037369114.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/nby/vgm/6052950639.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/eby/vgm/6052949750.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/eby/vgm/6052920758.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/sfc/vgm/6052929744.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/eby/vgm/6031523262.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/eby/vgm/6050000583.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/sfc/vgm/6052918259.html" />
+        <rdf:li rdf:resource="http://sfbay.craigslist.org/nby/vgm/6052917660.html" />
+      </rdf:Seq>
+    </items>
+  </channel>
+  <item rdf:about="http://sfbay.craigslist.org/scz/vgm/6024913562.html">
+    <title><![CDATA[League of Legends Account Stacked! &#x0024;111]]></title>
+    <link>http://sfbay.craigslist.org/scz/vgm/6024913562.html</link>
+    <description><![CDATA[This posting is for a league of legends account. It is my main account for years and I've invested $1,000s in this account. I have over 130 skins, and all champs except for a few new recent ones. Previously was Platinum but that was a few seasons ago [...]]]></description>
+    <dc:date>2017-03-20T19:11:17-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/scz/vgm/6024913562.html</dc:source>
+    <dc:title><![CDATA[League of Legends Account Stacked! &#x0024;111]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00e0e_3w7CTm2yJFK_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T19:11:17-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/nby/vgm/6053023760.html">
+    <title><![CDATA[xbox 360 racing wheel & pedals (petaluma) &#x0024;50]]></title>
+    <link>http://sfbay.craigslist.org/nby/vgm/6053023760.html</link>
+    <description><![CDATA[xbox racing wheel and pedals in excellent condition. Call for more details, Greg 415 385736three]]></description>
+    <dc:date>2017-03-20T19:04:58-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/nby/vgm/6053023760.html</dc:source>
+    <dc:title><![CDATA[xbox 360 racing wheel & pedals (petaluma) &#x0024;50]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00K0K_8vVWm3CresX_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T19:04:58-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/eby/vgm/6016742343.html">
+    <title><![CDATA[Pachislo Slot Machine-Skill Stop-Includes Tokens (fremont / union city / newark) &#x0024;300]]></title>
+    <link>http://sfbay.craigslist.org/eby/vgm/6016742343.html</link>
+    <description><![CDATA[Pachislo Slot Machine-Skill Stop-Includes Tokens. Slot in great shape inside and out. All the lights and sounds in working order. Was told machine can be adjusted for real coins. $325]]></description>
+    <dc:date>2017-03-20T19:04:12-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/eby/vgm/6016742343.html</dc:source>
+    <dc:title><![CDATA[Pachislo Slot Machine-Skill Stop-Includes Tokens (fremont / union city / newark) &#x0024;300]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00X0X_fMkLKXELNL0_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T19:04:12-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/eby/vgm/6053017867.html">
+    <title><![CDATA[Sony PlayStation 4 - Game console - HDR - 500 GB HDD - jet black - Unc (fremont / union city / newark) &#x0024;300]]></title>
+    <link>http://sfbay.craigslist.org/eby/vgm/6053017867.html</link>
+    <description><![CDATA[http://www.dell.com/en-us/shop/accessories/apd/a9270467?dgc=ST&cid=308990&lid=5841086&acd=1230980731501410&ven1=sWaZxphjP&ven2=,&ven3=275403446903040409 Posted for $324+Taxes Brand new inside the box]]></description>
+    <dc:date>2017-03-20T18:59:16-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/eby/vgm/6053017867.html</dc:source>
+    <dc:title><![CDATA[Sony PlayStation 4 - Game console - HDR - 500 GB HDD - jet black - Unc (fremont / union city / newark) &#x0024;300]]></dc:title>
+    <dc:type>text</dc:type>
+    <dcterms:issued>2017-03-20T18:59:16-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/sby/vgm/6053017714.html">
+    <title><![CDATA[DS XL Pokemon Sun and Moon (san jose east) &#x0024;210]]></title>
+    <link>http://sfbay.craigslist.org/sby/vgm/6053017714.html</link>
+    <description><![CDATA[Only played about 50 hours. Don't have time to use anymore.]]></description>
+    <dc:date>2017-03-20T18:59:06-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/sby/vgm/6053017714.html</dc:source>
+    <dc:title><![CDATA[DS XL Pokemon Sun and Moon (san jose east) &#x0024;210]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00s0s_50qnWfC6p3x_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T18:59:06-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/sfc/vgm/6053017507.html">
+    <title><![CDATA[TITANFALL 2014 COLLECTORS EDITION IN FACTORY BOX - PC (SF) &#x0024;300]]></title>
+    <link>http://sfbay.craigslist.org/sfc/vgm/6053017507.html</link>
+    <description><![CDATA[Hi! I bought these brand new in 2014. Still GEM MINT condition, in original factory shipping box. All offers considered! This is the PC edition. Not Xbox. #27998 of 35000 #10584 of 35000 ]]></description>
+    <dc:date>2017-03-20T18:58:54-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/sfc/vgm/6053017507.html</dc:source>
+    <dc:title><![CDATA[TITANFALL 2014 COLLECTORS EDITION IN FACTORY BOX - PC (SF) &#x0024;300]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00d0d_gwph2ZH3XjN_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T18:58:54-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/sby/vgm/6053016081.html">
+    <title><![CDATA[PS4 Games (san jose east) &#x0024;40]]></title>
+    <link>http://sfbay.craigslist.org/sby/vgm/6053016081.html</link>
+    <description><![CDATA[Selling together or separate depending on offers.]]></description>
+    <dc:date>2017-03-20T18:57:26-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/sby/vgm/6053016081.html</dc:source>
+    <dc:title><![CDATA[PS4 Games (san jose east) &#x0024;40]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00i0i_3ek2DsfrjEE_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T18:57:26-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/eby/vgm/6053000978.html">
+    <title><![CDATA[PLAYSTATION EYECAMERA AND WAND (pittsburg / antioch) &#x0024;70]]></title>
+    <link>http://sfbay.craigslist.org/eby/vgm/6053000978.html</link>
+    <description><![CDATA[I am selling a Playstation 3 eye camera and wand for playstation move. Both are in new condition also comes with charger, three games, and instruction book. I am asking $70 firm.  <a href="/fb/sfo/vgm/6053000978" class="showcontact" title="click to show contact info">show contact info</a>]]></description>
+    <dc:date>2017-03-20T18:43:01-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/eby/vgm/6053000978.html</dc:source>
+    <dc:title><![CDATA[PLAYSTATION EYECAMERA AND WAND (pittsburg / antioch) &#x0024;70]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00707_hAtHf7m4O18_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T18:43:01-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/sfc/vgm/6027053932.html">
+    <title><![CDATA[Batman Arkham Knight Limited edition (nob hill) &#x0024;50]]></title>
+    <link>http://sfbay.craigslist.org/sfc/vgm/6027053932.html</link>
+    <description><![CDATA[Box has damage. it comes with artbook, comic, new battery for the statue, statue, game and steel case. the statue is pretty much new, the game is still sealed. Prefer to meet at cable car museum(1201 Mason St, San Francisco, CA 94108)/Central police [...]]]></description>
+    <dc:date>2017-03-20T18:36:58-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/sfc/vgm/6027053932.html</dc:source>
+    <dc:title><![CDATA[Batman Arkham Knight Limited edition (nob hill) &#x0024;50]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00w0w_9OAVoHsWseR_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T18:36:58-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/sby/vgm/6052895292.html">
+    <title><![CDATA[SELLING XBOX 360 SLIM w/ Power cable and WARRANTY!!! (san jose east) &#x0024;100]]></title>
+    <link>http://sfbay.craigslist.org/sby/vgm/6052895292.html</link>
+    <description><![CDATA[Selling an xbox 360 with the power box. This xbox has been BARELY used. This also includes a 90 DAY WARRANTY. Yes that is right, 90 day warranty! If this machine is bad (never usually) than i will replace it for you! This is the xbox 360 SLIM model.  [...]]]></description>
+    <dc:date>2017-03-20T18:35:36-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/sby/vgm/6052895292.html</dc:source>
+    <dc:title><![CDATA[SELLING XBOX 360 SLIM w/ Power cable and WARRANTY!!! (san jose east) &#x0024;100]]></dc:title>
+    <dc:type>text</dc:type>
+    <dcterms:issued>2017-03-20T18:35:36-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/sby/vgm/6052976477.html">
+    <title><![CDATA[NEW purchased March 15th w/ Receipt & Warranty (willow glen / cambrian) &#x0024;295]]></title>
+    <link>http://sfbay.craigslist.org/sby/vgm/6052976477.html</link>
+    <description><![CDATA[Brand new Xbox 1 S Limited Edition in BLUE includes Gears of War ~~ posted by busted 12 year olds' Mom I have the 3/15/17 RECEIPT & WARRANTY (still unregistered) -- the warranty will belong to you when you register the console with MS. Son purchase [...]]]></description>
+    <dc:date>2017-03-20T18:35:13-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/sby/vgm/6052976477.html</dc:source>
+    <dc:title><![CDATA[NEW purchased March 15th w/ Receipt & Warranty (willow glen / cambrian) &#x0024;295]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00202_9MKKNVHqOOK_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T18:35:13-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/scz/vgm/6052990030.html">
+    <title><![CDATA[Ps3 (watsonville) &#x0024;150]]></title>
+    <link>http://sfbay.craigslist.org/scz/vgm/6052990030.html</link>
+    <description><![CDATA[Nothing wrong with it. I harly even use it. Need money for my new born baby. Comes with hdmi, 1 gray control, control charger, and it comes with gta V]]></description>
+    <dc:date>2017-03-20T18:32:39-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/scz/vgm/6052990030.html</dc:source>
+    <dc:title><![CDATA[Ps3 (watsonville) &#x0024;150]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00y0y_gShmr8ujby5_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T18:32:39-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/eby/vgm/6028654728.html">
+    <title><![CDATA[Oculus Rift DK1 Development Kit 1 Virtual Reality VR Complete Package (dublin / pleasanton / livermore) &#x0024;199]]></title>
+    <link>http://sfbay.craigslist.org/eby/vgm/6028654728.html</link>
+    <description><![CDATA[Titles says it all. This is a collector's item. I am asking $199. Please do not waste both of our time. Thank you. Unit will come with the following accessories:Oculus Goggles UnitBlack Plastic Carrying Case3 Pairs of Eye LensesHDMI CableHDMI Ad [...]]]></description>
+    <dc:date>2017-03-20T18:20:58-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/eby/vgm/6028654728.html</dc:source>
+    <dc:title><![CDATA[Oculus Rift DK1 Development Kit 1 Virtual Reality VR Complete Package (dublin / pleasanton / livermore) &#x0024;199]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00H0H_7LCWxoHa28q_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T18:20:58-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/nby/vgm/6020506032.html">
+    <title><![CDATA[BRAND NEW !!!! ReCore Collector's Edition - Xbox One (san rafael) &#x0024;80]]></title>
+    <link>http://sfbay.craigslist.org/nby/vgm/6020506032.html</link>
+    <description><![CDATA[BRAND NEW FACTORY SEALED !!!! ReCore Collector's Edition - Xbox One on sale for only $80.00 Retail price:$180.00 + TAX = $198.00 Local pickup and cash only About the Product Includes a full game physical disc of ReCore. Hand painted and finished [...]]]></description>
+    <dc:date>2017-03-20T18:12:53-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/nby/vgm/6020506032.html</dc:source>
+    <dc:title><![CDATA[BRAND NEW !!!! ReCore Collector's Edition - Xbox One (san rafael) &#x0024;80]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/01313_jltVfVGsBYo_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T18:12:53-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/sby/vgm/6052965737.html">
+    <title><![CDATA[Xbox 360, with Controller and games (san jose south) &#x0024;50]]></title>
+    <link>http://sfbay.craigslist.org/sby/vgm/6052965737.html</link>
+    <description><![CDATA[I have an Xbox 360, original (black) with controller and games. I don't play it. Asking best offer. Does not come with hard drive]]></description>
+    <dc:date>2017-03-20T18:10:38-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/sby/vgm/6052965737.html</dc:source>
+    <dc:title><![CDATA[Xbox 360, with Controller and games (san jose south) &#x0024;50]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00m0m_hUPj2eaW9fs_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T18:10:38-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/sfc/vgm/6052963452.html">
+    <title><![CDATA[Nintendo NES Classic Mini (downtown / civic / van ness) &#x0024;160]]></title>
+    <link>http://sfbay.craigslist.org/sfc/vgm/6052963452.html</link>
+    <description><![CDATA[NES Classic Console Mini Brand new in box 160 cash only FIRM FIRM FIRM FIRM FIRM FIRM No trades Pickup in downtown SF only Send an email please and thanks]]></description>
+    <dc:date>2017-03-20T18:08:39-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/sfc/vgm/6052963452.html</dc:source>
+    <dc:title><![CDATA[Nintendo NES Classic Mini (downtown / civic / van ness) &#x0024;160]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00606_74Dw8bNEyUx_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T18:08:39-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/sfc/vgm/6037369114.html">
+    <title><![CDATA[Nintendo Switch Super Bomberman R Brand New Factory Sealed Bomber Man (bernal heights) &#x0024;45]]></title>
+    <link>http://sfbay.craigslist.org/sfc/vgm/6037369114.html</link>
+    <description><![CDATA[I have for sale Bomberman R for the nintendo switch, I got this as a gift and Dont have time to play it Im asking 45.00 firm nes , nintendo , nes mini , nes classic edition , zelda , bowt , video games , Nes, mini, mod, jailbreak, classic, Nintend [...]]]></description>
+    <dc:date>2017-03-20T17:58:31-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/sfc/vgm/6037369114.html</dc:source>
+    <dc:title><![CDATA[Nintendo Switch Super Bomberman R Brand New Factory Sealed Bomber Man (bernal heights) &#x0024;45]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00X0X_3bn4TvFIUHc_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T17:58:31-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/nby/vgm/6052950639.html">
+    <title><![CDATA[Nintendo DS Lite (santa rosa) &#x0024;40]]></title>
+    <link>http://sfbay.craigslist.org/nby/vgm/6052950639.html</link>
+    <description><![CDATA[Nintendo DS Lite Comes with the stylus but no charger in very good condition. Also comes with Nintendo DS video game( games around the world) Please leave your phone number if interested thanks]]></description>
+    <dc:date>2017-03-20T17:57:28-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/nby/vgm/6052950639.html</dc:source>
+    <dc:title><![CDATA[Nintendo DS Lite (santa rosa) &#x0024;40]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00W0W_6fWMtpkivGr_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T17:57:28-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/eby/vgm/6052949750.html">
+    <title><![CDATA[retro gaming unit (pittsburg / antioch) &#x0024;140]]></title>
+    <link>http://sfbay.craigslist.org/eby/vgm/6052949750.html</link>
+    <description><![CDATA[this game station emulates over 10 consoles including nes, snes, sega genesis, n64, atari, playstation and more this has over 11,000 games all you need to do is plug and play. i will include 2 nes remotes to start playing.]]></description>
+    <dc:date>2017-03-20T17:56:44-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/eby/vgm/6052949750.html</dc:source>
+    <dc:title><![CDATA[retro gaming unit (pittsburg / antioch) &#x0024;140]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00i0i_6Gg2qvpe1eC_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T17:56:44-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/eby/vgm/6052920758.html">
+    <title><![CDATA[Nitendo 64 (vallejo / benicia) &#x0024;80]]></title>
+    <link>http://sfbay.craigslist.org/eby/vgm/6052920758.html</link>
+    <description><![CDATA[Has 5 games call at  <a href="/fb/sfo/vgm/6052920758" class="showcontact" title="click to show contact info">show contact info</a>]]></description>
+    <dc:date>2017-03-20T17:44:27-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/eby/vgm/6052920758.html</dc:source>
+    <dc:title><![CDATA[Nitendo 64 (vallejo / benicia) &#x0024;80]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00X0X_dPZuveHO8LN_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T17:44:27-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/sfc/vgm/6052929744.html">
+    <title><![CDATA[Sony PlayStation 3D Display 24" Widescreen LED Monitor Built in Speakr (sunset / parkside) &#x0024;150]]></title>
+    <link>http://sfbay.craigslist.org/sfc/vgm/6052929744.html</link>
+    <description><![CDATA[Sony PlayStation 3D Display 24" Widescreen LED Monitor w/ Built in Speakers for sale. Received as a gift. Never used, Like New, comes in a white box. Comes with one pair of 3D glasses. Local pick up, cash only.]]></description>
+    <dc:date>2017-03-20T17:39:56-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/sfc/vgm/6052929744.html</dc:source>
+    <dc:title><![CDATA[Sony PlayStation 3D Display 24" Widescreen LED Monitor Built in Speakr (sunset / parkside) &#x0024;150]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00o0o_jecHIHXF9Br_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T17:39:56-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/eby/vgm/6031523262.html">
+    <title><![CDATA[Lord of the Rings: Battle for Middle Earth II 2 (danville / san ramon) &#x0024;40]]></title>
+    <link>http://sfbay.craigslist.org/eby/vgm/6031523262.html</link>
+    <description><![CDATA[Used PC game: The Lord of the Rings: The Battle for Middle Earth II 2 Complete with 6 disk and are in Excellent Condition, come with Manual and activation key, also the keyboard commands. Can be picked up at San Ramon (nights and weekend) or Walnut [...]]]></description>
+    <dc:date>2017-03-20T17:37:24-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/eby/vgm/6031523262.html</dc:source>
+    <dc:title><![CDATA[Lord of the Rings: Battle for Middle Earth II 2 (danville / san ramon) &#x0024;40]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00q0q_akLa4mLQGh1_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T17:37:24-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/eby/vgm/6050000583.html">
+    <title><![CDATA[Nintendo Switch Tablet Only (emeryville) &#x0024;260]]></title>
+    <link>http://sfbay.craigslist.org/eby/vgm/6050000583.html</link>
+    <description><![CDATA[Nintendo Switch tablet only. No accessories or box included. System unused. Purchased another console to get another dock and set of controllers. Price is firm. Please text at  <a href="/fb/sfo/vgm/6050000583" class="showcontact" title="click to show contact info">show contact info</a>if interested. Pick up location: Starbucks 5767 Christi [...]]]></description>
+    <dc:date>2017-03-20T17:36:13-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/eby/vgm/6050000583.html</dc:source>
+    <dc:title><![CDATA[Nintendo Switch Tablet Only (emeryville) &#x0024;260]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00y0y_2dAEWMCgHJr_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T17:36:13-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/sfc/vgm/6052918259.html">
+    <title><![CDATA[Classic NES Brand New In Box (SOMA / south beach) &#x0024;120]]></title>
+    <link>http://sfbay.craigslist.org/sfc/vgm/6052918259.html</link>
+    <description><![CDATA[I'm selling a brand new, unopened Classic NES with 30 games for $150. Item can be picked up from Tiburon or San Francisco. Please email with any questions. These are the 30 games: Balloon Fight Bubble Bobble Castlevania Castlevania II: Simon's Q [...]]]></description>
+    <dc:date>2017-03-20T17:30:29-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/sfc/vgm/6052918259.html</dc:source>
+    <dc:title><![CDATA[Classic NES Brand New In Box (SOMA / south beach) &#x0024;120]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00q0q_5TnLFk7sl2G_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T17:30:29-07:00</dcterms:issued>
+  </item>
+  <item rdf:about="http://sfbay.craigslist.org/nby/vgm/6052917660.html">
+    <title><![CDATA[Classic NES Brand New In Box (tiburon / belvedere) &#x0024;120]]></title>
+    <link>http://sfbay.craigslist.org/nby/vgm/6052917660.html</link>
+    <description><![CDATA[I'm selling a brand new, unopened Classic NES with 30 games for $150. Item can be picked up from Tiburon or San Francisco. Please email with any questions. These are the 30 games: Balloon Fight Bubble Bobble Castlevania Castlevania II: Simon's Q [...]]]></description>
+    <dc:date>2017-03-20T17:29:57-07:00</dc:date>
+    <dc:language>en-us</dc:language>
+    <dc:rights>copyright 2017 craiglist</dc:rights>
+    <dc:source>http://sfbay.craigslist.org/nby/vgm/6052917660.html</dc:source>
+    <dc:title><![CDATA[Classic NES Brand New In Box (tiburon / belvedere) &#x0024;120]]></dc:title>
+    <dc:type>text</dc:type>
+    <enc:enclosure resource="https://images.craigslist.org/00q0q_5TnLFk7sl2G_300x300.jpg" type="image/jpeg"/>
+    <dcterms:issued>2017-03-20T17:29:57-07:00</dcterms:issued>
+  </item>
+</rdf:RDF>

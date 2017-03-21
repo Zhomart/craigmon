@@ -1,4 +1,5 @@
 require "./craig_mon/*"
+require "logger"
 
 module CraigMon
 
@@ -10,6 +11,15 @@ module CraigMon
     @@db.as(DB::Database)
   end
 
+  def self.logger=(l : Logger)
+    @@logger = l
+  end
+
+  def self.logger : Logger
+    @@logger.as(Logger)
+  end
+
 end
 
-CraigMon::Cli.run
+CraigMon.logger = Logger.new(STDOUT)
+CraigMon.logger.level = Logger::INFO

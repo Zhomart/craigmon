@@ -7,19 +7,19 @@ module CraigMon
     extend self
 
     def run
-      command = nil
-
-      OptionParser.parse! do |parser|
-        parser.banner = "Usage: craigmon [arguments] web|worker"
-        parser.on("-h", "--help", "Show this help") { puts parser }
-        parser.unknown_args { |args, _|  command = args.first if args.size > 0 }
+      if ARGV.size < 1
+        puts "No command provided. Try 'craigmon --help' for more information."
+        exit(1)
+      elsif ARGV == ["--help"] || ARGV == ["-h"]
+        puts "Usage: craigmon web|worker [arguments]"
+        exit
       end
 
-      case command
+      case ARGV[0]
       when "web" then run_command { CraigMon::Web.run }
       when "worker" then run_command { CraigMon::Worker.run }
       else
-        puts "No command provided. Try 'craigmon --help' for more information."
+        puts "Unknown command. Try 'craigmon --help' for more information."
         exit(1)
       end
     end
@@ -33,7 +33,7 @@ module CraigMon
     private def setup
       CraigMon.db = DB.open("sqlite3:craigmon.db")
 
-      CraigMon.db.exec "CREATE TABLE IF NOT EXISTS urls (id int, name varchar(30), url varchar(420))"
+      Models.prepare
     end
 
     private def finish
