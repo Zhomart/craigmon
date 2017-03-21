@@ -13,6 +13,7 @@ Monitors craigslist items.
 - [ ] Worker: Download url from craigslist every N seconds and store results in DB
 - [ ] Worker: crawl all pages
 - [ ] UI: Show results
+- [ ] UI: auth
 
 ## Installation
 
@@ -28,7 +29,6 @@ TODO: Write usage instructions here
 
 **My thoughts on Crystal**
 
-- Compared to ruby, crystal has few tools and libraries.
 - Crystal doesn't have embedding debuggers, e.g. `pry`, `binding.irb` or `IPython.embed`
 - Just found interactive crystal `icr` https://github.com/greyblake/crystal-icr
 - No code reloading. Always have to restart the app.
@@ -39,6 +39,7 @@ TODO: Write usage instructions here
 - Kemal's router is really simple.
 - Overall crystal app feels really fast.
 - Couldn't make `xpath` to work for RSS.
+
 
 ## Contributing
 
