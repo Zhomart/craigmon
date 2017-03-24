@@ -14,17 +14,17 @@ module CraigMon::Models
       urls.first.url
     end
 
-    def self.set(url : String) : Array
+    def self.set(url : String) : Array(String)
       if Crecto::Repo.aggregate(self, :count, :id) == 0
         _url = URL.new
         _url.name = "default"
         _url.url = url
-        Crecto::Repo.insert(_url).errors
+        Crecto::Repo.insert(_url)
       else
         _url = Crecto::Repo.all(self).first
         _url.url = url
-        Crecto::Repo.update(_url).errors
-      end
+        Crecto::Repo.update(_url)
+      end.errors.map { |h| "#{h[:field]} #{h[:message]}" }
     end
 
   end
