@@ -1,15 +1,9 @@
-require "./craig_mon/*"
+require "sqlite3"
+require "crecto"
 require "logger"
+require "./craig_mon/*"
 
 module CraigMon
-
-  def self.db=(db : DB::Database)
-    @@db = db
-  end
-
-  def self.db : DB::Database
-    @@db.as(DB::Database)
-  end
 
   def self.logger=(l : Logger)
     @@logger = l

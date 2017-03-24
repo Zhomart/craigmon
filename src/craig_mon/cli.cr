@@ -1,6 +1,4 @@
 require "option_parser"
-require "db"
-require "sqlite3"
 
 module CraigMon
   module Cli
@@ -31,13 +29,11 @@ module CraigMon
     end
 
     private def setup
-      CraigMon.db = DB.open("sqlite3:craigmon.db")
-
-      Models.prepare
+      Database.setup
     end
 
     private def finish
-      CraigMon.db.close
+      Database.finish
     end
 
   end
