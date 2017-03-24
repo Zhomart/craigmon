@@ -4,7 +4,7 @@ alias RSS = CraigMon::RSS
 
 describe CraigMon::RSS do
 
-  describe ".items" do
+  describe "#craigslist_items" do
     it "returns items as XML::Node" do
       rss_str = File.read(SpecHelper.root + "/spec/fixtures/example.xml")
       rss = RSS.parse(rss_str)
