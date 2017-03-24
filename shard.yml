@@ -9,7 +9,14 @@ dependencies:
     github: kemalcr/kemal
     branch: master
   sqlite3:
-    github: crystal-lang/crystal-sqlite3
+    github: Zhomart/crystal-sqlite3
+    # github: crystal-lang/crystal-sqlite3
+    branch: master
+  faker:
+    github: askn/faker
+  crecto:
+    github: fridgerator/crecto
+    branch: master
 
 targets:
   craigmon:

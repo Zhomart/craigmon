@@ -1,8 +1,16 @@
 version: 1.0
 shards:
+  crecto:
+    github: fridgerator/crecto
+    commit: 90f2caf065af93a80755b497586983af95271e63
+
   db:
     github: crystal-lang/crystal-db
-    version: 0.3.3
+    version: 0.4.0
+
+  faker:
+    github: askn/faker
+    version: 0.3.0
 
   kemal:
     github: kemalcr/kemal
@@ -12,11 +20,11 @@ shards:
     github: jeromegn/kilt
     version: 0.3.3
 
-  mysql:
-    github: crystal-lang/crystal-mysql
-    version: 0.3.1
-
   radix:
     github: luislavena/radix
     version: 0.3.8
+
+  sqlite3:
+    github: Zhomart/crystal-sqlite3
+    commit: 960626353ad3324c99920e9d09b20f8b8ee94834
 
