@@ -4,11 +4,12 @@ alias Item = CraigMon::Models::Item
 
 private def build_item
   item = Item.new
-  item.id = rand(100_000).to_i64
+  item.uid = 10_000_000_000 + rand(100_000).to_i64
   item.title = Faker::Lorem.sentence
   item.link = Faker::Internet.url("craigslist.com")
-  item.date = Time.now - Time::Span.new(rand(10), 0, 0, 0)
-  item.issued = Time.now - Time::Span.new(rand(10), 0, 0, 0)
+  item.date = Time.utc_now - Time::Span.new(rand(10), 0, 0, 0)
+  item.issued = Time.utc_now - Time::Span.new(rand(10), 0, 0, 0)
+  item.search_url = "https://craigslist.com/search"
   item
 end
 
@@ -17,13 +18,13 @@ describe CraigMon::Models::Item do
   describe ".all" do
     it "returns all items in DB ordered by date DESC" do
       SpecHelper.setup
-      Item.create_table
-      Item.delete
+      Crecto::Repo.delete_all(Item)
       items = [build_item, build_item, build_item, build_item]
-      items.map(&.save)
-      sorted_dates = items.map(&.date).sort.reverse
-      Item.all.map(&.date).zip(sorted_dates).each { |a,b|
-        (a-b).should be < Time::Span.new(0, 0, 1)
+      items.map { |i| Crecto::Repo.insert(i) }
+      sorted_dates = items.map { |i| i.date.as(Time) }.sort.reverse
+      Item.all.size.should eq 4
+      Item.all.map { |i| i.date.as(Time) }.zip(sorted_dates).each { |a,b|
+        (a - b).should be < Time::Span.new(0, 0, 1)
       }
     end
   end
@@ -31,16 +32,22 @@ describe CraigMon::Models::Item do
   describe ".set_vanished_all!" do
     it "sets vanished_at for all items" do
       SpecHelper.setup
-      Item.create_table
-      Item.delete
+      Crecto::Repo.delete_all(Item)
       a, b = build_item, build_item
-      b.vanished_at = Time.now - 10
-      a.save
-      b.save
+      b.vanished_at = Time.utc_now - 10
+      a, b = {a, b}.map { |i| Crecto::Repo.insert(i).instance }
       Item.set_vanished_all!
-      Item.find(a.id).vanished_at.should_not eq nil
-      diff = Item.find(b.id).vanished_at.as(Time) - b.vanished_at.as(Time)
+      Item.find_by?(uid: a.uid).as(Item).vanished_at.should_not eq nil
+      diff = Item.find_by?(uid: b.uid).as(Item).vanished_at.as(Time) - b.vanished_at.as(Time)
       diff.should be < Time::Span.new(0, 0, 1)
+    end
+  end
+
+  describe ".find_by?" do
+    it "returns nil if not found" do
+      SpecHelper.setup
+      Crecto::Repo.delete_all(Item)
+      Item.find_by?(uid: 100).should be nil
     end
   end
 

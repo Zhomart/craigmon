@@ -1,71 +1,40 @@
-require "xml"
-
 module CraigMon::Models
-  struct Item
-    property id, title, link
-    property description : String
-    property date : Time | Nil
-    property issued : Time | Nil
-    property vanished_at : Time | Nil
-    property updated_at : Time
-    property comment : String
-    property picture_urls : String # comma separated
-    property search_url : String
-    property new_record : Bool
+  class Item < Crecto::Model
+    alias Repo = Crecto::Repo
 
-    def initialize(@id : Int64, @title : String, @link : String)
-      @description = ""
-      @date = nil
-      @issued = nil
-      @vanished_at = nil
-      @updated_at = Time.now
-      @comment = ""
-      @picture_urls = ""
-      @search_url = ""
-      @new_record = true
+    schema "items" do
+      field :uid, Int64
+      field :title, String
+      field :link, String
+      field :description, String
+      field :date, Time
+      field :issued, Time
+      field :vanished_at, Time
+      field :comment, String
+      field :picture_urls, String
+      field :search_url, String
     end
 
-    def self.new(res : DB::ResultSet) : Item
-      item = Item.new(res.read(Int64), res.read(String), res.read(String))
-      item.description = res.read(String)
-      item.date = res.read(Time)
-      item.issued = res.read(Time)
-      item.vanished_at = res.read(Time)
-      item.updated_at = res.read(Time)
-      item.comment = res.read(String)
-      item.picture_urls = res.read(String)
-      item.search_url = res.read(String)
-      item.new_record = false
-      item
-    end
-
-    def save
-      if new_record
-        CraigMon.logger.info "creating a new record for #{id} | #{date} | #{title}"
-        CraigMon.db.exec("INSERT INTO items (id, title, link, description, date, issued, vanished_at,
-          updated_at, comment, picture_urls, search_url) VALUES(?,?,?,?,?,?,?,?,?,?,?)",
-          id, title, link, description, date, issued, vanished_at, Time.now, comment, picture_urls, search_url)
-      else
-        CraigMon.logger.debug "updating #{id}"
-        CraigMon.db.exec("UPDATE items SET title=?, link=?, description=?, date=?, issued=?, vanished_at=?,
-          updated_at=?, comment=?, picture_urls=?, search_url=? WHERE id=?",
-          title, link, description, date, issued, vanished_at, Time.now, comment, picture_urls, search_url, id)
-      end
-      @new_record = false
-      true
-    end
-
-    def self.find?(id)
-      CraigMon.db.query_one? "SELECT id, title, link, description, date, issued, vanished_at,
-        updated_at, comment, picture_urls, search_url FROM items WHERE id=? limit 1", id do |val|
-        return nil if val.nil?
-        self.new(val)
-      end
+    #
+    # ```
+    #   Item.find_by?(uid: 12345)
+    # ```
+    def self.find_by?(**wheres) : Item?
+      all = Repo.all(self, Repo::Query.where(**wheres))
+      return nil if all.empty?
+      all.first
     end
 
     def self.set_vanished_all!
-      now = Time.now
-      CraigMon.db.exec "UPDATE items SET vanished_at = ?, updated_at = ? WHERE vanished_at IS NULL", now, now
+      now = Time.utc_now
+      query = Repo::Query.where(vanished_at: nil)
+      Repo.update_all(self, query, { vanished_at: now })
+    end
+
+    def self.all(order_by = "date DESC") : Array(Item)
+      col, order = order_by.split(" ")
+      query = Repo::Query.order_by(order_by)
+      Repo.all(self, query)
     end
 
   end
