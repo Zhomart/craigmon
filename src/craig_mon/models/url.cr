@@ -1,16 +1,29 @@
 module CraigMon::Models
-  class URL
-
-    def self.get : String | Nil
-      CraigMon.db.query_one? "SELECT url FROM urls limit 1", as: { String }
+  class URL < Crecto::Model
+    schema "urls" do
+      field :name, String
+      field :url, String
     end
 
-    def self.update(url : String)
-      id = CraigMon.db.query_one? "SELECT id FROM urls limit 1", as: { Int32 }
-      if id
-        CraigMon.db.exec "UPDATE urls SET url=? WHERE id=?", url, id
+    validate_required [:name, :url]
+    validate_format :url, /^https?:\/\/.+/
+
+    def self.get : String | Nil
+      urls = Crecto::Repo.all(self)
+      return nil if urls.size == 0
+      urls.first.url
+    end
+
+    def self.set(url : String) : Array
+      if Crecto::Repo.aggregate(self, :count, :id) == 0
+        _url = URL.new
+        _url.name = "default"
+        _url.url = url
+        Crecto::Repo.insert(_url).errors
       else
-        CraigMon.db.exec "INSERT INTO urls (id, name, url) VALUES (?, ?, ?)", 1, "default", url
+        _url = Crecto::Repo.all(self).first
+        _url.url = url
+        Crecto::Repo.update(_url).errors
       end
     end
 
