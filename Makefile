@@ -7,4 +7,4 @@ web:
 				crystal run src/boot.cr -- web
 
 worker:
-				crystal run src/boot.cr -- worker
+				crystal run src/boot.cr -- worker --debug

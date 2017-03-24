@@ -29,20 +29,6 @@ describe CraigMon::Models::Item do
     end
   end
 
-  describe ".set_vanished_all!" do
-    it "sets vanished_at for all items" do
-      SpecHelper.setup
-      Crecto::Repo.delete_all(Item)
-      a, b = build_item, build_item
-      b.vanished_at = Time.utc_now - 10
-      a, b = {a, b}.map { |i| Crecto::Repo.insert(i).instance }
-      Item.set_vanished_all!
-      Item.find_by?(uid: a.uid).as(Item).vanished_at.should_not eq nil
-      diff = Item.find_by?(uid: b.uid).as(Item).vanished_at.as(Time) - b.vanished_at.as(Time)
-      diff.should be < Time::Span.new(0, 0, 1)
-    end
-  end
-
   describe ".find_by?" do
     it "returns nil if not found" do
       SpecHelper.setup

@@ -25,12 +25,6 @@ module CraigMon::Models
       all.first
     end
 
-    def self.set_vanished_all!
-      now = Time.utc_now
-      query = Repo::Query.where(vanished_at: nil)
-      Repo.update_all(self, query, { vanished_at: now })
-    end
-
     def self.all(order_by = "date DESC") : Array(Item)
       col, order = order_by.split(" ")
       query = Repo::Query.order_by(order_by)

@@ -1,5 +1,3 @@
-require "option_parser"
-
 module CraigMon
   module Cli
     extend self
