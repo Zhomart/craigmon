@@ -10,12 +10,14 @@
           <input onkeyup={ updateUrlValue } value={ url } type="text" placeholder="e.g. https://sfbay.craigslist.org/search/vga" class="add-url pure-u-3-4">
           <button class="pure-button pure-button-primary">Save</button>
         </fieldset>
+        <span class="pure-form-message-inline add-url-error">{ message }</span>
       </form>
     </div>
   </div>
 
   <script>
     this.url = null
+    this.message = null
 
     updateUrlValue(e) {
       this.url = e.target.value
@@ -23,13 +25,17 @@
 
     saveUrl(e) {
       e.preventDefault()
+      this.message = null
+      this.update()
       nanoajax.ajax({
         url:'/api/url',
         method: "PATCH",
         body: `url=${encodeURIComponent(this.url)}`,
       }, (code, res) => {
-        console.log(code)
-        console.log(res)
+        if (code != 200){
+          this.message = JSON.parse(res).errors.join(" ")
+          this.update()
+        }
       })
     }
 
