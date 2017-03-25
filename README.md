@@ -10,9 +10,11 @@ Monitors craigslist items.
 ## TODO
 
 - [x] UI: Accept a craigslist search url to process and store in DB
-- [ ] Worker: Download url from craigslist every N seconds and store results in DB
-- [ ] Worker: crawl all pages
-- [ ] UI: Show results
+- [x] Worker: Download url from craigslist every N seconds and store results in DB
+- [x] Worker: crawl multiple pages
+- [x] UI: Show results
+- [ ] UI: pagination
+- [ ] UI: vanished filter
 - [ ] UI: auth
 
 ## Installation

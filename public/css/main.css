@@ -13,3 +13,26 @@ input.add-url {
 .add-url-error {
   color: #992a2a
 }
+
+.items-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+}
+
+.items-container > table {
+  width: 100%;
+}
+
+.items-container tr.vanished td {
+  background-color: #ffa3a3;
+}
+
+.items-container tr a {
+  color: #0078e7;
+  font-weight: bold;
+}
+
+.footer {
+  padding-top: 64px;
+}
