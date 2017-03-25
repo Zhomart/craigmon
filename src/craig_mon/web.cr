@@ -24,8 +24,13 @@ module CraigMon
 
       get "/api/items" do |env|
         env.response.content_type = "application/json"
-        items = Models::Item.all
-        { success: true, items: items }.to_json
+        per_page = 20
+        total = Models::Item.total_count
+        pages = (total + per_page - 1) / per_page
+        page = env.params.query["page"]?
+        page = page ? page.to_i32 : 1
+        items = Models::Item.all(limit: per_page, offset: (page-1)*per_page)
+        { success: true, pages: pages, items: items }.to_json
       end
 
       get("/api/*" ) { |env| env.response.status_code = 404 }

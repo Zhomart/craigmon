@@ -7,13 +7,20 @@ Monitors craigslist items.
 - Web UI
 - Worker that fetches data from craigslist
 
+## Used
+
+- Web: Kemal
+- DB: sqlite3
+- JS: riotjs
+- CSS: http://bulma.io
+
 ## TODO
 
 - [x] UI: Accept a craigslist search url to process and store in DB
 - [x] Worker: Download url from craigslist every N seconds and store results in DB
 - [x] Worker: crawl multiple pages
 - [x] UI: Show results
-- [ ] UI: pagination
+- [x] UI: pagination
 - [ ] UI: vanished filter
 - [ ] UI: auth
 

@@ -26,10 +26,15 @@ module CraigMon::Models
       all.first
     end
 
-    def self.all(order_by = "date DESC") : Array(Item)
+    def self.all(order_by = "date DESC", offset = 0, limit : Int32 | Nil = nil) : Array(Item)
       col, order = order_by.split(" ")
-      query = Repo::Query.order_by(order_by)
+      query = Repo::Query.order_by(order_by).offset(offset)
+      query = query.limit(limit) if limit
       Repo.all(self, query)
+    end
+
+    def self.total_count : Int32
+      Repo.aggregate(self, :count, :id).as(Int64).to_i32
     end
 
     def self.from_rss(value : Hash(String, String)) : Item
