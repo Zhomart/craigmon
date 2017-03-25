@@ -24,6 +24,7 @@ module CraigMon::Database
         comment TEXT,
         picture_urls TEXT,
         search_url VARCHAR(255) NOT NULL,
+        price float,
         created_at DATETIME,
         updated_at DATETIME
       );

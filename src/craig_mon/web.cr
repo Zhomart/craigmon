@@ -1,4 +1,5 @@
 require "kemal"
+require "json"
 
 module CraigMon
   module Web
@@ -19,6 +20,12 @@ module CraigMon
           env.response.status_code = 400
           { success: false, errors: errors }.to_json
         end
+      end
+
+      get "/api/items" do |env|
+        env.response.content_type = "application/json"
+        items = Models::Item.all
+        { success: true, items: items }.to_json
       end
 
       get("/api/*" ) { |env| env.response.status_code = 404 }
