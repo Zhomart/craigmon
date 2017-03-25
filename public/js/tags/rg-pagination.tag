@@ -9,8 +9,8 @@
       <li><a class="pagination-link" onclick="{ back }" if="{ opts.pagination.page > 1 }">{ opts.pagination.page - 1 }</a></li>
       <li><a class="pagination-link is-current">{ opts.pagination.page }</a></li>
       <li><a class="pagination-link" onclick="{ forward }" if="{ opts.pagination.page < opts.pagination.pages }">{ opts.pagination.page + 1 }</a></li>
-      <li><span class="pagination-ellipsis" if={ opts.pagination.page < opts.pagination.pages - 2 }>&hellip;</span></li>
-      <li><a class="pagination-link" if={ opts.pagination.page < opts.pagination.pages - 2 } onclick={ last }>{ opts.pagination.pages }</a></li>
+      <li><span class="pagination-ellipsis" if={ opts.pagination.page <= opts.pagination.pages - 2 }>&hellip;</span></li>
+      <li><a class="pagination-link" if={ opts.pagination.page <= opts.pagination.pages - 2 } onclick={ last }>{ opts.pagination.pages }</a></li>
     </ul>
   </div>
 

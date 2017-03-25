@@ -18,6 +18,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th width="80px">Price</th>
             <th>Title</th>
             <th width="140px">Date</th>
             <th width="110px">Vanished</th>
@@ -27,6 +28,7 @@
         </thead>
         <tbody>
           <tr each={ items } class={ vanished: vanished_in }>
+            <td>${ price }</td>
             <td>{ title }</td>
             <td>{ moment(date).format("MMM Do, H:mm") }</td>
             <td>{ vanished_in }</td>
@@ -48,13 +50,16 @@
     this.pagination = {pages: 0, page: 1}
 
     openPage(page, e) {
-      opts.app.trigger("openPage", page)
+      var params = new URLSearchParams(window.location.search);
+      var cpage = params.get("page") || 1;
+      if (page != cpage)
+        route("/searches/" + this.search.id + "/items?page=" + page);
     }
 
     opts.app.on("search-items", (search, items, page, pages) => {
       this.search = search
       this.items = items.map(item => {
-        item.title = item.title.replace("&#x0024;", "$")
+        item.title = item.title.replace(/&#x0024;.+$/, "").trim()
         item.date = new Date(item.date)
         item.issued = new Date(item.issued)
         item.created_at = new Date(item.created_at)

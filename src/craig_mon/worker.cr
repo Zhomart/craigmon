@@ -3,17 +3,20 @@ require "http/client"
 
 module CraigMon
   class Worker
-    SLEEP = 10
-
     alias Repo = Crecto::Repo
     alias Q = Crecto::Repo::Query
     alias Search = Models::Search
     alias Item = Models::Item
 
-    def self.run
+    def self.run()
+      delay = 30
+      max_pages = 10
+
       OptionParser.parse! do |parser|
         parser.banner = "Usage: craigmon worker [arguments]"
-        parser.on("-d", "--debug", "debug mode") { CraigMon.logger.level = Logger::DEBUG }
+        parser.on("-d DELAY", "--delay=DELAY", "delay/sleep in minutes, default is #{delay}") { |v| delay = v.to_i32 }
+        parser.on("-m PAGES", "--pages=PAGES", "max pages to crawl, default is #{max_pages}") { |v| max_pages = v.to_i32 }
+        parser.on("--debug", "debug mode") { CraigMon.logger.level = Logger::DEBUG }
         parser.on("-q", "--quiet", "quiet mode") { CraigMon.logger.level = Logger::WARN }
         parser.on("-h", "--help", "Show this help") {
           puts parser
@@ -21,14 +24,23 @@ module CraigMon
         }
       end
 
+      delay_sec = Math.max(delay * 60, 30)
+      max_pages = Math.min(max_pages, 50)
+
       CraigMon.logger.info "Running worker"
-      worker = self.new()
+      CraigMon.logger.info "  delay_sec=#{delay_sec}"
+      CraigMon.logger.info "  max_pages=#{max_pages}"
+
+      worker = self.new(max_pages)
       loop do
         started_at = Time.now
         worker.process()
-        CraigMon.logger.debug "Finished in #{Time.now - started_at}. Sleeping for #{SLEEP} seconds"
-        sleep SLEEP
+        CraigMon.logger.debug "Finished in #{Time.now - started_at}. Sleeping for #{delay_sec} seconds"
+        sleep delay_sec
       end
+    end
+
+    def initialize(@max_pages : Int32)
     end
 
     def process
@@ -42,7 +54,7 @@ module CraigMon
           puts e.backtrace.join("\n")
           puts
         end
-        sleep 2 + rand(4)
+        sleep 3 + rand(7)
       end
     end
 
@@ -55,9 +67,12 @@ module CraigMon
         vanished << item.uid.as(Int64)
       end
 
+      last_uid = -1_i64
+
       url = search.url.as(String)
-      get_from_craigslist(url, max_page: 5) do |page, values|
+      get_from_craigslist(url, max_page: @max_pages) do |page, values|
         CraigMon.logger.debug "Updating items on page #{page}"
+        uid = -1_i64
         values.each do |value|
           uid = Int64.new(value["id"])
           if item = Item.find_by?(uid: uid)
@@ -71,6 +86,11 @@ module CraigMon
             Repo.insert(item)
           end
         end
+        if last_uid == uid
+          CraigMon.logger.debug "Stopping on page #{page} with uid #{uid}"
+          break
+        end
+        last_uid = uid
       end # get_from_craigslist
 
       now = Time.utc_now
@@ -104,7 +124,7 @@ module CraigMon
         values = rss.craigslist_items
         yield(page, values)
         s += values.size
-        sleep 3 + rand(6)
+        sleep 5 + rand(10)
       end
     end
 

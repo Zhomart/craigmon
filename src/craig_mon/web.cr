@@ -77,3 +77,19 @@ module CraigMon
 
   end
 end
+
+class Kemal::CommonLogHandler < Kemal::BaseLogHandler
+
+  IGNORE_EXTS = {".tag", ".js", ".css", ".png", ".jpg", ".html", ".ico"}
+
+  def call(context)
+    time = Time.now
+    call_next(context)
+    if IGNORE_EXTS.none? { |ext| context.request.resource.ends_with?(ext) }
+      elapsed_text = elapsed_text(Time.now - time)
+      @handler << time << " " << context.response.status_code << " " << context.request.method << " " << context.request.resource << " " << elapsed_text << "\n"
+    end
+    context
+  end
+
+end
