@@ -15,7 +15,8 @@ dependencies:
   faker:
     github: askn/faker
   crecto:
-    github: fridgerator/crecto
+    # github: fridgerator/crecto
+    github: Zhomart/crecto
     branch: master
 
 targets:

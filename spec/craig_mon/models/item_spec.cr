@@ -2,28 +2,19 @@ require "../../spec_helper"
 
 alias Item = CraigMon::Models::Item
 
-private def build_item
-  item = Item.new
-  item.uid = 10_000_000_000 + rand(100_000).to_i64
-  item.title = Faker::Lorem.sentence
-  item.link = Faker::Internet.url("craigslist.com")
-  item.date = Time.utc_now - Time::Span.new(rand(10), 0, 0, 0)
-  item.issued = Time.utc_now - Time::Span.new(rand(10), 0, 0, 0)
-  item.search_url = "https://craigslist.com/search"
-  item
-end
-
 describe CraigMon::Models::Item do
 
-  describe ".all" do
+  describe ".all_for(search_id)" do
     it "returns all items in DB ordered by date DESC" do
       SpecHelper.setup
       Crecto::Repo.delete_all(Item)
+      search = create_search
+      create_item { |i| i.search = create_search }
       items = [build_item, build_item, build_item, build_item]
-      items.map { |i| Crecto::Repo.insert(i) }
+      items.map { |i| i.search = search; Crecto::Repo.insert(i) }
       sorted_dates = items.map { |i| i.date.as(Time) }.sort.reverse
-      Item.all.size.should eq 4
-      Item.all.map { |i| i.date.as(Time) }.zip(sorted_dates).each { |a,b|
+      Item.all_for(search.id).size.should eq 4
+      Item.all_for(search.id).map { |i| i.date.as(Time) }.zip(sorted_dates).each { |a,b|
         (a - b).should be < Time::Span.new(0, 0, 1)
       }
     end

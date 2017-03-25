@@ -1,28 +1,13 @@
 <View-Items>
-
   <div class="container">
+    <h1 class="title uk-heading-primary">Craigslist Monitor</h1>
 
-    <div class="columns">
-      <div class="column"></div>
-      <div class="column">
-        <form class="add" onsubmit={ saveUrl }>
-          <p>Put craigslist search url here:</p>
-          <div class="field has-addons">
-            <p class="control is-expanded">
-              <input onkeyup={ updateUrlValue } value={ url } type="text"
-                class={ "is-danger": message, input: true }
-                placeholder="e.g. https://sfbay.craigslist.org/search/vga">
-            </p>
-            <p class="control">
-              <button class="button is-info">
-                Save
-              </button>
-            </p>
-          </div>
-          <p class="help is-danger">{ message }</p>
-        </form>
-      </div>
-      <div class="column"></div>
+    <a href="/searches">Back</a>
+
+    <div class="search" if={ search }>
+      <p><b>Name:</b> { search.name }</p>
+      <p><b>URL:</b> <a href="{ search.url }" target="_blank">{ search.url }</a></p>
+      <p><b>Crawled at:</b> { crawled_at ? moment(crawled_at).format("MMM Do, H:mm") : "not crawled" }</p>
     </div>
 
     <div class="pagination-container">
@@ -58,37 +43,16 @@
   </div>
 
   <script>
-    this.url = null
-    this.message = null
+    this.search = null
     this.items = []
     this.pagination = {pages: 0, page: 1}
-
-    updateUrlValue(e) {
-      this.url = e.target.value
-    }
-
-    saveUrl(e) {
-      e.preventDefault()
-      this.message = null
-      this.update()
-      this.opts.app.trigger("saveUrl", this.url);
-    }
 
     openPage(page, e) {
       opts.app.trigger("openPage", page)
     }
 
-    opts.app.on("url-error", (message) => {
-      this.message = message
-      this.update()
-    })
-
-    opts.app.on("url", (url) => {
-      this.url = url
-      this.update()
-    })
-
-    opts.app.on("items", (items, page, pages) => {
+    opts.app.on("search-items", (search, items, page, pages) => {
+      this.search = search
       this.items = items.map(item => {
         item.title = item.title.replace("&#x0024;", "$")
         item.date = new Date(item.date)
@@ -102,7 +66,6 @@
       this.pagination = { page: page, pages: pages };
       this.update()
     })
-
 
 
     vanishedInCalc(vanished_at, date, created_at) {

@@ -27,7 +27,8 @@ module CraigMon
     end
 
     def process
-      url = Models::URL.get
+      # url = Models::URL.get
+      url = ""
       return when_url_nil() if url.nil? || url.empty?
 
       vanished = Set(Int64).new

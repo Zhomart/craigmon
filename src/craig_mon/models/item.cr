@@ -14,6 +14,8 @@ module CraigMon::Models
       field :picture_urls, String
       field :search_url, String
       field :price, Float32
+
+      belongs_to :search, Search
     end
 
     #
@@ -26,10 +28,10 @@ module CraigMon::Models
       all.first
     end
 
-    def self.all(order_by = "date DESC", offset = 0, limit : Int32 | Nil = nil) : Array(Item)
+    def self.all_for(search_id, order_by = "date DESC", offset = 0, limit : Int32 | Nil = nil) : Array(Item)
       col, order = order_by.split(" ")
-      query = Repo::Query.order_by(order_by).offset(offset)
-      query = query.limit(limit) if limit
+      query = Repo::Query.where(search_id: search_id).order_by(order_by)
+      query = query.limit(limit).offset(offset) if limit
       Repo.all(self, query)
     end
 

@@ -2,10 +2,12 @@ module CraigMon::Database
 
   def self.setup
     Crecto::Repo::ADAPTER.get_db.exec "
-      CREATE TABLE IF NOT EXISTS urls (
+      CREATE TABLE IF NOT EXISTS searches (
         id INTEGER NOT NULL PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
+        name VARCHAR(255) NOT NULL UNIQUE,
         url VARCHAR(255) NOT NULL,
+        active bool,
+        crawled_at DATETIME,
         created_at DATETIME,
         updated_at DATETIME
       );
@@ -25,6 +27,7 @@ module CraigMon::Database
         picture_urls TEXT,
         search_url VARCHAR(255) NOT NULL,
         price float,
+        search_id INTEGER NOT NULL REFERENCES searches(id),
         created_at DATETIME,
         updated_at DATETIME
       );

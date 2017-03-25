@@ -4,6 +4,8 @@ require "faker"
 ENV["SQLITE3_PATH"] = "sqlite3://craigmon.test.db"
 require "../src/craig_mon"
 
+require "./helpers"
+
 module SpecHelper
 
   def self.setup

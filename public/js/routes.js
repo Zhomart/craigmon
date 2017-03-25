@@ -1,26 +1,21 @@
 (function(win){
   var main, app;
 
-  function routeItems(){
-    main.update({view: "items"})
+  function routeSearches(){
+    main.update({view: "searches"})
+  }
 
-    nanoajax.ajax({
-      url:'/api/url',
-    }, (code, res) => {
-      url = JSON.parse(res).url
-      app.trigger("url", url);
-    });
+  function routeSearchItems(searchId){
+    main.update({view: "items"})
 
     var params = new URLSearchParams(window.location.search);
     var page = params.get("page") || 1;
     nanoajax.ajax({
-      url:'/api/items?page=' + page,
+      url:'/api/searches/' + searchId + '/items?page=' + page,
     }, (code, res) => {
       let result = JSON.parse(res);
-      app.trigger("items", result.items, parseInt(page), result.pages);
+      app.trigger("search-items", result.search, result.items, parseInt(page), result.pages);
     });
-
-    app.trigger("view-items");
   }
 
   function routeNotFound(){
@@ -31,9 +26,10 @@
     app = _app;
     main = _main;
 
-    route("/", routeItems);
-    route("/items", routeItems);
-    route("/items?page=*", routeItems);
+    route("/", routeSearches);
+    route("/searches", routeSearches);
+    route("/searches/*/items", routeSearchItems);
+    route("/searches/*/items?page=*", routeSearchItems);
     route("/..", routeNotFound);
   }
 })(window);
