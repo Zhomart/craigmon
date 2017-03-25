@@ -1,27 +1,18 @@
+.container {
+  padding-bottom: 1em;
+}
+
 .title {
   text-align: center;
   display: block;
-}
-
-.add {
-}
-
-input.add-url {
-
-}
-
-.add-url-error {
-  color: #992a2a
+  font-size: 3em;
+  padding-top: 0.5em;
 }
 
 .items-container {
   margin-left: auto;
   margin-right: auto;
   width: 1200px;
-}
-
-.items-container > table {
-  width: 100%;
 }
 
 .items-container tr.vanished td {
@@ -33,6 +24,12 @@ input.add-url {
   font-weight: bold;
 }
 
-.footer {
-  padding-top: 64px;
+.pagination-container {
+  width: 700px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2em;
+  padding-bottom: 1em;
+  clear: both;
 }
