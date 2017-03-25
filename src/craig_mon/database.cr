@@ -16,7 +16,7 @@ module CraigMon::Database
     Crecto::Repo::ADAPTER.get_db.exec "
       CREATE TABLE IF NOT EXISTS items (
         id INTEGER NOT NULL PRIMARY KEY,
-        uid BIGINT NOT NULL UNIQUE,
+        uid BIGINT NOT NULL,
         title VARCHAR(255) NOT NULL,
         link VARCHAR(255) NOT NULL,
         description TEXT,
@@ -25,7 +25,6 @@ module CraigMon::Database
         vanished_at DATETIME,
         comment TEXT,
         picture_urls TEXT,
-        search_url VARCHAR(255) NOT NULL,
         price float,
         search_id INTEGER NOT NULL REFERENCES searches(id),
         created_at DATETIME,

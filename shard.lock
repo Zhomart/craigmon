@@ -24,6 +24,10 @@ shards:
     github: luislavena/radix
     version: 0.3.8
 
+  sentry:
+    github: samueleaton/sentry
+    commit: 9f14238a5acc2582c0c48958199dc49e00b651b3
+
   sqlite3:
     github: Zhomart/crystal-sqlite3
     commit: 960626353ad3324c99920e9d09b20f8b8ee94834

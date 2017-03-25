@@ -12,7 +12,6 @@ module CraigMon::Models
       field :vanished_at, Time
       field :comment, String
       field :picture_urls, String
-      field :search_url, String
       field :price, Float32
 
       belongs_to :search, Search

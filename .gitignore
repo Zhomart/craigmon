@@ -3,3 +3,6 @@
 /bin/
 /.shards/
 *.db
+
+/boot
+/craigmon

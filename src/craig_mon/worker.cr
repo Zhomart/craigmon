@@ -5,6 +5,11 @@ module CraigMon
   class Worker
     SLEEP = 10
 
+    alias Repo = Crecto::Repo
+    alias Q = Crecto::Repo::Query
+    alias Search = Models::Search
+    alias Item = Models::Item
+
     def self.run
       OptionParser.parse! do |parser|
         parser.banner = "Usage: craigmon worker [arguments]"
@@ -27,33 +32,43 @@ module CraigMon
     end
 
     def process
-      # url = Models::URL.get
-      url = ""
-      return when_url_nil() if url.nil? || url.empty?
+      Repo.all(Search, Q.where("active = 1")).each do |search|
+        begin
+          process_search(search)
+          Repo.update_all(Search, Q.where(id: search.id), {crawled_at: Time.utc_now})
+        rescue e
+          CraigMon.logger.warn "Error while processing search #{search.id}. #{search.name} with url #{search.url.inspect}"
+          CraigMon.logger.warn e.to_s
+          puts e.backtrace.join("\n")
+          puts
+        end
+        sleep 2 + rand(4)
+      end
+    end
 
+    def process_search(search : Search)
+      CraigMon.logger.debug "Procsesing search #{search.id}. #{search.name}"
+
+      # store un-vanished items' ids
       vanished = Set(Int64).new
-      Crecto::Repo.all(Models::Item, Crecto::Repo::Query.where("vanished_at is null")).each do |item|
+      Repo.all(Item, Q.where("vanished_at is null")).each do |item|
         vanished << item.uid.as(Int64)
       end
 
+      url = search.url.as(String)
       get_from_craigslist(url, max_page: 5) do |page, values|
         CraigMon.logger.debug "Updating items on page #{page}"
         values.each do |value|
           uid = Int64.new(value["id"])
-          if uid == "6058686496"
-            p uid
-            p value[:title]
-            p Models::Item.find_by?(uid: uid)
-          end
-          if item = Models::Item.find_by?(uid: uid)
+          if item = Item.find_by?(uid: uid)
             if item.vanished_at
-              Crecto::Repo.update_all(Models::Item, Crecto::Repo::Query.where(uid: uid), { vanished_at: nil })
+              Repo.update_all(Item, Q.where(uid: uid), { vanished_at: nil })
             end
             vanished.delete(uid)
           else
-            item = Models::Item.from_rss(value)
-            item.search_url = url
-            Crecto::Repo.insert(item)
+            item = Item.from_rss(value)
+            item.search_id = search.id
+            Repo.insert(item)
           end
         end
       end # get_from_craigslist
@@ -91,10 +106,6 @@ module CraigMon
         s += values.size
         sleep 3 + rand(6)
       end
-    end
-
-    private def when_url_nil
-      CraigMon.logger.warn "url is nil"
     end
 
     private def when_http_error(response)

@@ -19,6 +19,11 @@ dependencies:
     github: Zhomart/crecto
     branch: master
 
+development_dependencies:
+  sentry:
+    github: samueleaton/sentry
+    branch: master
+
 targets:
   craigmon:
     main: src/boot.cr
