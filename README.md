@@ -40,9 +40,9 @@ TODO: Write usage instructions here
 
 - Crystal doesn't have embedding debuggers, e.g. `pry`, `binding.irb` or `IPython.embed`
 - Just found interactive crystal `icr` https://github.com/greyblake/crystal-icr
-- Language is addicting.
-- No code reloading. Always have to restart the app.
+- Language is addictive.
 - Blazingly fast.
+- No code reloading. Always have to restart the app.
 - OptionParser is too simple.
 - Crystal doesn't have my loved `Pathname` from ruby.
 - Kemal's router is really simple.
