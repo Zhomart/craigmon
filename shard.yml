@@ -20,6 +20,8 @@ dependencies:
     branch: master
   baked_file_system:
     github: schovi/baked_file_system
+  kemal-basic-auth:
+    github: kemalcr/kemal-basic-auth
 
 development_dependencies:
   sentry:
