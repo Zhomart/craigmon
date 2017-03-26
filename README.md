@@ -21,8 +21,8 @@ Monitors craigslist items.
 - [x] Worker: crawl multiple pages
 - [x] UI: Show results
 - [x] UI: pagination
+- [x] UI: auth
 - [ ] UI: vanished filter
-- [ ] UI: auth
 
 ## Installation
 
@@ -40,14 +40,13 @@ TODO: Write usage instructions here
 
 - Crystal doesn't have embedding debuggers, e.g. `pry`, `binding.irb` or `IPython.embed`
 - Just found interactive crystal `icr` https://github.com/greyblake/crystal-icr
+- Language is addicting.
 - No code reloading. Always have to restart the app.
-- Sometimes doesn't feel like writing on static types language.
-- But static typing makes feel more confident and safe.
+- Blazingly fast.
 - OptionParser is too simple.
-- Crystal doesn't have my beloved `Pathname` from ruby.
+- Crystal doesn't have my loved `Pathname` from ruby.
 - Kemal's router is really simple.
-- Overall crystal app feels really fast.
-- Couldn't make `xpath` to work for RSS.
+- Couldn't make XML's `xpath` work for RSS.
 
 
 ## Contributing
