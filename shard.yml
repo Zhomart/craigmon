@@ -18,6 +18,8 @@ dependencies:
     # github: fridgerator/crecto
     github: Zhomart/crecto
     branch: master
+  baked_file_system:
+    github: schovi/baked_file_system
 
 development_dependencies:
   sentry:
