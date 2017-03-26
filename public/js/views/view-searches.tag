@@ -9,7 +9,7 @@
         <thead>
           <tr>
             <th width="20px"></th>
-            <th>Name</th>
+            <th width="180px">Name</th>
             <th>URL</th>
             <th width="110px">Date</th>
             <th width="110px">Crawled</th>

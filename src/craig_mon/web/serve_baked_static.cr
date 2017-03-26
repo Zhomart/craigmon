@@ -2,7 +2,7 @@ class ServeBakedStatic < Kemal::Handler
   only ["/js/", "/css/"]
 
   def initialize
-    @fallthrough = false
+    @fallthrough = true
   end
 
   def call(context)

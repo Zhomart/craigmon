@@ -16,20 +16,18 @@ module CraigMon
 
     get "/api/searches" do |env|
       env.response.content_type = "application/json"
-      { searches: searches() }.to_json
+      { searches: all_searches() }.to_json
     end
 
     post "/api/searches" do |env|
       env.response.content_type = "application/json"
-      name = env.params.body["name"].as(String)
-      url = env.params.body["url"].as(String)
       search = Search.new
-      search.name = name
-      search.url = url
+      search.name = env.params.json["name"].to_s if env.params.json.has_key?("name")
+      search.url = env.params.json["url"].to_s if env.params.json.has_key?("url")
       search.active = true
       errors = Repo.insert(search).errors
       if errors.empty?
-        { searches: searches() }.to_json
+        { searches: all_searches() }.to_json
       else
         env.response.status_code = 400
         { errors: errors }.to_json
@@ -76,7 +74,7 @@ module CraigMon
       Kemal.run
     end
 
-    def self.searches
+    def self.all_searches
       Repo.all(Search, Q.order_by("created_at DESC"))
     end
 
