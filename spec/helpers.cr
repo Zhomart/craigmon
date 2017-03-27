@@ -5,7 +5,6 @@ def build_item(&block : CraigMon::Models::Item -> _)
   item.link = Faker::Internet.url("craigslist.com")
   item.date = Time.utc_now - Time::Span.new(rand(10), 0, 0, 0)
   item.issued = Time.utc_now - Time::Span.new(rand(10), 0, 0, 0)
-  item.search_url = "https://craigslist.com/search"
   yield item
   item
 end
