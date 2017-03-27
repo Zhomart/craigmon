@@ -7,15 +7,10 @@
 
   function routeSearchItems(searchId){
     main.update({view: "items"})
+  }
 
-    var params = new URLSearchParams(window.location.search);
-    var page = params.get("page") || 1;
-    nanoajax.ajax({
-      url:'/api/searches/' + searchId + '/items?page=' + page,
-    }, (code, res) => {
-      let result = JSON.parse(res);
-      app.trigger("search-items", result.search, result.items, parseInt(page), result.pages);
-    });
+  function routeSearchItem(searchId, itemId){
+    main.update({view: "item"})
   }
 
   function routeNotFound(){
@@ -30,6 +25,7 @@
     route("/searches", routeSearches);
     route("/searches/*/items", routeSearchItems);
     route("/searches/*/items?page=*", routeSearchItems);
+    route("/searches/*/items/*", routeSearchItem);
     route("/..", routeNotFound);
   }
 })(window);

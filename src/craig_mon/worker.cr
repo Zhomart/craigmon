@@ -8,6 +8,7 @@ module CraigMon
     alias Search = Models::Search
     alias Item = Models::Item
 
+
     def self.run()
       delay = 30
       max_pages = 10
@@ -31,20 +32,22 @@ module CraigMon
       CraigMon.logger.info "  delay_sec=#{delay_sec}"
       CraigMon.logger.info "  max_pages=#{max_pages}"
 
-      worker = self.new(max_pages)
+      worker = self.new(max_pages, delay_sec)
       loop do
         started_at = Time.now
         worker.process()
         CraigMon.logger.debug "Finished in #{Time.now - started_at}. Sleeping for #{delay_sec} seconds"
-        sleep delay_sec
+        sleep 5
       end
     end
 
-    def initialize(@max_pages : Int32)
+    def initialize(@max_pages : Int32, @delay_sec : Int32)
     end
 
     def process
       Repo.all(Search, Q.where("active = 1")).each do |search|
+        delay_diff = Time::Span.new(0, 0, @delay_sec + rand(15))
+        # next if search.crawled_at && Time.utc_now - search.crawled_at.as(Time) < delay_diff
         begin
           process_search(search)
           Repo.update_all(Search, Q.where(id: search.id), {crawled_at: Time.utc_now})
@@ -59,7 +62,7 @@ module CraigMon
     end
 
     def process_search(search : Search)
-      CraigMon.logger.debug "Procsesing search #{search.id}. #{search.name}"
+      CraigMon.logger.debug "Procsesing search #{search.id}: #{search.name.inspect}"
 
       # store un-vanished items' ids
       vanished = Set(Int64).new
@@ -83,10 +86,11 @@ module CraigMon
           else
             item = Item.from_rss(value)
             item.search_id = search.id
+            item.picture_urls = Craigslist.get_pictures(value["link"]).join(", ") if value["link"]?
             Repo.insert(item)
           end
         end
-        if last_uid == uid
+        if last_uid == uid || values.size == 0
           CraigMon.logger.debug "Stopping on page #{page} with uid #{uid}"
           break
         end
@@ -104,20 +108,9 @@ module CraigMon
     end
 
     private def get_from_craigslist(url, max_page = 1, &block)
-      uri = URI.parse(url)
-      params = uri.query.to_s.split("&")
-      [/sort=/, /format=/, /s=/].each do |rem|
-        if idx = params.index { |v| v.match(rem) }
-          params.delete_at(idx)
-        end
-      end
-      params << "format=rss"
-      params << "sort=date"
       s = 0
       (0...max_page).each do |page|
-        _params = params.dup
-        _params << "s=#{s}"
-        uri.query = _params.join("&")
+        uri = Craigslist.norm_search_uri_rss(url, s: s, sort: "date")
         response = HTTP::Client.get(uri)
         break when_http_error(response) if response.status_code != 200
         rss = RSS.parse(response.body)

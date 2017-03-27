@@ -27,6 +27,9 @@ development_dependencies:
   sentry:
     github: samueleaton/sentry
     branch: master
+  webmock:
+    github: manastech/webmock.cr
+    branch: master
 
 targets:
   craigmon:

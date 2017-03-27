@@ -16,12 +16,12 @@
 }
 
 .items-container tr.vanished td {
-  background-color: #ffa3a3;
+  background-color: #FF2B56;
+  color: white;
 }
 
-.items-container tr a {
-  color: #0078e7;
-  font-weight: bold;
+.items-container tr.vanished td a {
+  color: white;
 }
 
 .pagination-container {

@@ -4,6 +4,10 @@ shards:
     github: schovi/baked_file_system
     version: 0.9.4
 
+  cossack:
+    github: greyblake/crystal-cossack
+    version: 0.1.4
+
   crecto:
     github: Zhomart/crecto
     commit: ae0bf5638e3cdf867db3dd662c74595d75e95d38
@@ -39,4 +43,8 @@ shards:
   sqlite3:
     github: Zhomart/crystal-sqlite3
     commit: 960626353ad3324c99920e9d09b20f8b8ee94834
+
+  webmock:
+    github: manastech/webmock.cr
+    commit: c673f393a31eac2734c7599897357ef1f3f24011
 

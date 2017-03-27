@@ -20,8 +20,8 @@
           <tr>
             <th width="80px">Price</th>
             <th>Title</th>
-            <th width="140px">Date</th>
-            <th width="110px">Vanished</th>
+            <th width="164px">Date</th>
+            <th width="280px">Gone</th>
             <th></th>
             <th></th>
           </tr>
@@ -29,9 +29,13 @@
         <tbody>
           <tr each={ items } class={ vanished: vanished_in }>
             <td>${ price }</td>
-            <td>{ title }</td>
+            <td><a href="/searches/{ search.id }/items/{ id }">{ title }</a></td>
             <td>{ moment(date).format("MMM Do, H:mm") }</td>
-            <td>{ vanished_in }</td>
+            <td>
+              <virtual if={ vanished_at }>
+                { moment(vanished_at).format("MMM Do, H:mm") } ({ vanished_in })
+              </virtual>
+            </td>
             <td>{ comment ? "*" : "" }</td>
             <td><a href="{ link }" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a></td>
           </tr>
@@ -45,6 +49,8 @@
   </div>
 
   <script>
+    this.mixin(Mixin)
+
     this.search = null
     this.items = []
     this.pagination = {pages: 0, page: 1}
@@ -56,36 +62,24 @@
         route("/searches/" + this.search.id + "/items?page=" + page);
     }
 
-    opts.app.on("search-items", (search, items, page, pages) => {
-      this.search = helperFixRecordDates(search, ["crawled_at"])
-      this.items = items.map(_item => {
-        item = helperFixRecordDates(_item, ["date", "issued", "vanished_at"])
-        item.title = item.title.replace(/&#x0024;.+$/, "").trim()
-        item.vanished_in = this.vanishedInCalc(item.vanished_at, item.date, item.created_at)
-        return item
-      })
-      this.pagination = { page: page, pages: pages };
-      this.update()
+    this.on("mount", () => {
+      var params = new URLSearchParams(window.location.search);
+      var page = params.get("page") || 1;
+      var parts = window.location.href.split("/");
+      var searchId = parts[parts.indexOf("searches") + 1];
+      nanoajax.ajax({
+        url:'/api/searches/' + searchId + '/items?page=' + page,
+      }, (code, res) => {
+        let result = JSON.parse(res);
+        this.setItems(result.search, result.items, parseInt(page), result.pages)
+      });
     })
 
-    vanishedInCalc(vanished_at, date, created_at) {
-      if (!vanished_at)
-        return null;
-
-      let initial_date = date < created_at ? date : created_at;
-      var diff = (vanished_at - initial_date) / 60000;
-      var measure = "mins";
-      if (diff > 90) {
-        diff = diff / 60;
-        measure = "hours";
-      }
-      if (diff > 48) {
-        diff = diff / 24;
-        measure = "days";
-      }
-      diff = Math.round(diff * 10) / 10;
-
-      return `in ${diff} ${measure}`;
+    setItems(search, items, page, pages) {
+      this.search = this.helperFixRecordDates(search, ["crawled_at"])
+      this.items = items.map(_item => this.mixinFixItem(_item) )
+      this.pagination = { page: page, pages: pages };
+      this.update()
     }
 
   </script>

@@ -84,6 +84,12 @@ module CraigMon
         { pages: pages, items: items, search: search }.to_json
       end
 
+      get "/api/searches/:search_id/items/:id" do |env|
+        env.response.content_type = "application/json"
+        item = Repo.get(Item, env.params.url["id"]).as(Item)
+        { item: item }.to_json
+      end
+
       get("/api/*" ) { |env| env.response.status_code = 404 }
       get("/*") { |env| send_index(env) }
       get("/") { |env| send_index(env) }
