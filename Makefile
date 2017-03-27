@@ -2,9 +2,9 @@ all:		build
 
 build:	src/**/*.cr
 				shards build --release
-				# crystal build --release --cross-compile --target "x86_64-unknown-linux-gnu" src/boot.cr -o craigmon-linux.o
-				# cc craigmon-linux.o -o craigmon-linux -lpcre -lrt -lm -lgc -lunwind
-				# rm craigmon-linux.o
+## crystal build --release --cross-compile --target "x86_64-unknown-linux-gnu" src/boot.cr -o craigmon-linux.o
+## cc craigmon-linux.o -o craigmon-linux -lpcre -lrt -lm -lgc -lunwind
+## rm craigmon-linux.o
 
 web:
 				crystal run src/boot.cr -- web

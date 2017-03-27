@@ -7,7 +7,7 @@
     <div class="search" if={ search }>
       <p><b>Name:</b> { search.name }</p>
       <p><b>URL:</b> <a href="{ search.url }" target="_blank">{ search.url }</a></p>
-      <p><b>Crawled at:</b> { crawled_at ? moment(crawled_at).format("MMM Do, H:mm") : "not crawled" }</p>
+      <p><b>Crawled at:</b> { search.crawled_at ? moment(search.crawled_at).format("MMM Do, H:mm") : "not crawled" }</p>
     </div>
 
     <div class="pagination-container">
@@ -57,21 +57,16 @@
     }
 
     opts.app.on("search-items", (search, items, page, pages) => {
-      this.search = search
-      this.items = items.map(item => {
+      this.search = helperFixRecordDates(search, ["crawled_at"])
+      this.items = items.map(_item => {
+        item = helperFixRecordDates(_item, ["date", "issued", "vanished_at"])
         item.title = item.title.replace(/&#x0024;.+$/, "").trim()
-        item.date = new Date(item.date)
-        item.issued = new Date(item.issued)
-        item.created_at = new Date(item.created_at)
-        item.updated_at = new Date(item.updated_at)
-        item.vanished_at = item.vanished_at ? new Date(item.vanished_at) : null
         item.vanished_in = this.vanishedInCalc(item.vanished_at, item.date, item.created_at)
         return item
       })
       this.pagination = { page: page, pages: pages };
       this.update()
     })
-
 
     vanishedInCalc(vanished_at, date, created_at) {
       if (!vanished_at)

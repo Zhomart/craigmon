@@ -6,14 +6,17 @@ require "./web/*"
 module CraigMon
   module Web
 
+    BAKED = false
+
     alias Repo = Crecto::Repo
     alias Q = Crecto::Repo::Query
     alias Search = Models::Search
     alias Item = Models::Item
 
-    serve_static false
-
-    Kemal.config.add_filter_handler ServeBakedStatic.new
+    if BAKED
+      serve_static !BAKED
+      Kemal.config.add_filter_handler ServeBakedStatic.new
+    end
 
     def self.run
       username, password = nil, nil
@@ -73,7 +76,7 @@ module CraigMon
         env.response.content_type = "application/json"
         search = Repo.get(Search, env.params.url["search_id"]).as(Search)
         per_page = 20
-        total = Models::Item.total_count
+        total = Models::Item.total_count(Q.where(search_id: search.id))
         pages = (total + per_page - 1) / per_page
         page = env.params.query["page"]?
         page = page ? page.to_i32 : 1
@@ -82,14 +85,19 @@ module CraigMon
       end
 
       get("/api/*" ) { |env| env.response.status_code = 404 }
-      get("/*") { FileStorage.get("/index.html").read }
-      get("/") { FileStorage.get("/index.html").read }
+      get("/*") { |env| send_index(env) }
+      get("/") { |env| send_index(env) }
 
       error 404 do
         "404 - Page not found."
       end
 
       Kemal.run
+    end
+
+    def self.send_index(env)
+      env.response.content_type = "text/html"
+      BAKED ? FileStorage.get("/index.html").read : File.read("public/index.html")
     end
 
     def self.all_searches

@@ -63,7 +63,7 @@ module CraigMon
 
       # store un-vanished items' ids
       vanished = Set(Int64).new
-      Repo.all(Item, Q.where("vanished_at is null")).each do |item|
+      Repo.all(Item, Q.where("vanished_at is null").where(search_id: search.id)).each do |item|
         vanished << item.uid.as(Int64)
       end
 

@@ -34,8 +34,8 @@ module CraigMon::Models
       Repo.all(self, query)
     end
 
-    def self.total_count : Int32
-      Repo.aggregate(self, :count, :id).as(Int64).to_i32
+    def self.total_count(q : Crecto::Repo::Query) : Int32
+      Repo.aggregate(self, :count, :id, q).as(Int64).to_i32
     end
 
     def self.from_rss(value : Hash(String, String)) : Item
