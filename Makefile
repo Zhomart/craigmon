@@ -2,23 +2,19 @@ all:		build
 
 build:	src/**/*.cr
 				shards build --release
-## crystal build --release --cross-compile --target "x86_64-unknown-linux-gnu" src/boot.cr -o craigmon-linux.o
-## cc craigmon-linux.o -o craigmon-linux -lpcre -lrt -lm -lgc -lunwind
-## rm craigmon-linux.o
 
+.PHONY: web
 web:
 				crystal run src/boot.cr -- web
 
+.PHONY: worker
 worker:
 				crystal run src/boot.cr -- worker --debug
 
-prepare:
+prepare: ./lib/sentry/src/sentry_cli.cr
 				mkdir -p ./bin/
 				crystal build --release ./lib/sentry/src/sentry_cli.cr -o ./bin/sentry
-				@echo "Sentry compalied to ./bin/sentry"
+				@echo "Sentry compiled to ./bin/sentry"
 
-upload:
-				rsync -azv --exclude=".git" --exclude="bin" --exclude=".shards" --exclude="lib" . $RADDRESS:/tmp/craigmon
-
-tag:
+tag: shard.yml
 				git tag `crystal src/parse_version.cr`
