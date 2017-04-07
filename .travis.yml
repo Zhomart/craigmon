@@ -1,6 +1,8 @@
 sudo: required
 language: crystal
-install: shards install
+install:
+- apt-get install -y sqlite3-dev
+- shards install
 script:
 - crystal spec --verbose
 before_deploy:
