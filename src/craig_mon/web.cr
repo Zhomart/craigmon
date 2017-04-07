@@ -5,8 +5,7 @@ require "./web/*"
 
 module CraigMon
   module Web
-
-    BAKED = false
+    BAKED = !!{{ env("BAKED") }}
 
     alias Repo = Crecto::Repo
     alias Q = Crecto::Repo::Query
@@ -38,7 +37,7 @@ module CraigMon
 
       get "/api/searches" do |env|
         env.response.content_type = "application/json"
-        { searches: all_searches() }.to_json
+        {searches: all_searches()}.to_json
       end
 
       post "/api/searches" do |env|
@@ -49,10 +48,10 @@ module CraigMon
         search.active = true
         errors = Repo.insert(search).errors
         if errors.empty?
-          { searches: all_searches() }.to_json
+          {searches: all_searches()}.to_json
         else
           env.response.status_code = 400
-          { errors: errors }.to_json
+          {errors: errors}.to_json
         end
       end
 
@@ -64,11 +63,11 @@ module CraigMon
         search.url = env.params.json["url"].to_s if env.params.json.has_key?("url")
         searchChange = Repo.update(search)
         if searchChange.errors.empty?
-          { search: searchChange.instance }.to_json
+          {search: searchChange.instance}.to_json
         else
           env.response.status_code = 400
           message = searchChange.errors.map { |e| "#{e[:field]} #{e[:message]}" }
-          { errors: searchChange.errors, message: message }.to_json
+          {errors: searchChange.errors, message: message}.to_json
         end
       end
 
@@ -80,17 +79,17 @@ module CraigMon
         pages = (total + per_page - 1) / per_page
         page = env.params.query["page"]?
         page = page ? page.to_i32 : 1
-        items = Models::Item.all_for(search.id, limit: per_page, offset: (page-1)*per_page)
-        { pages: pages, items: items, search: search }.to_json
+        items = Models::Item.all_for(search.id, limit: per_page, offset: (page - 1)*per_page)
+        {pages: pages, items: items, search: search}.to_json
       end
 
       get "/api/searches/:search_id/items/:id" do |env|
         env.response.content_type = "application/json"
         item = Repo.get(Item, env.params.url["id"]).as(Item)
-        { item: item }.to_json
+        {item: item}.to_json
       end
 
-      get("/api/*" ) { |env| env.response.status_code = 404 }
+      get("/api/*") { |env| env.response.status_code = 404 }
       get("/*") { |env| send_index(env) }
       get("/") { |env| send_index(env) }
 
@@ -109,12 +108,10 @@ module CraigMon
     def self.all_searches
       Repo.all(Search, Q.order_by("created_at DESC"))
     end
-
   end
 end
 
 class Kemal::CommonLogHandler < Kemal::BaseLogHandler
-
   IGNORE_EXTS = {".tag", ".js", ".css", ".png", ".jpg", ".html", ".ico"}
 
   def call(context)
@@ -126,5 +123,4 @@ class Kemal::CommonLogHandler < Kemal::BaseLogHandler
     end
     context
   end
-
 end

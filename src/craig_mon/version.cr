@@ -1,3 +1,3 @@
 module CraigMon
-  VERSION = "0.1.0"
+  VERSION = {{ run("#{__DIR__}/../parse_version.cr").stringify }}
 end

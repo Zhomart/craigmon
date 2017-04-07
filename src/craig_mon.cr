@@ -4,7 +4,6 @@ require "logger"
 require "./craig_mon/*"
 
 module CraigMon
-
   def self.logger=(l : Logger)
     @@logger = l
   end
@@ -12,7 +11,6 @@ module CraigMon
   def self.logger : Logger
     @@logger.as(Logger)
   end
-
 end
 
 CraigMon.logger = Logger.new(STDOUT)
