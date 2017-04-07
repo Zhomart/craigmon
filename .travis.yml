@@ -1,7 +1,5 @@
 sudo: required
 language: crystal
-services:
-- docker
 install: shards install
 script:
 - crystal spec --verbose
@@ -15,3 +13,4 @@ deploy:
   file: craigmon-$TRAVIS_OS_NAME-$TRAVIS_TAG.tar.gz
   on:
     repo: Zhomart/craigmon
+    tags: true

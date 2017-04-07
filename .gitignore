@@ -6,3 +6,5 @@
 
 /boot
 /craigmon
+/tmp
+*.tar.gz
