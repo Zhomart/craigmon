@@ -1,1 +1,17 @@
+sudo: required
 language: crystal
+services:
+- docker
+install: shards install
+script:
+- crystal spec --verbose
+before_deploy:
+- shards build --release
+- tar -czC ./bin craigmon > ./craigmon-$TRAVIS_OS_NAME-$TRAVIS_TAG.tar.gz
+deploy:
+  provider: releases
+  api_key:
+    secure: ylZasUIXYOygIPH+i0dDdrCh2KbA1+cGePz+jYk5PAxFZtRBKBNLqGMqMr/9tUGFSBJb1/BPebUMAqM5dgZ+a01pPooA8iv9wpd4UPBNnyxSdGmnUBGBHUlDGuopfCF9YghBMdpH0fR1gn3/jEzXS5WtYF2dI7emFStpe2lCcNe0qvX5RF0i1roGdG3Hd//p3U/rGrf0eSH/FBOy5oRKYhDOZo1RZroMYf0jT2pLh2gOL3nDYaGDNDlgUnmqgiW9js54dYyae+W7NjgnrVLrSAYoalP0FNdI4OGz00MOwSyAz2Yk0eAxZOI72WMuJuppfVKvLt/NKKzhZaDNUBobvTQLx9WyabnMQg7orIgLLX9kXYhhSiuGfbrhaowuGEJjlsnl19CtncPldDLT0k3Oa2BigEp0phCodzZKYpm3U5eopryFiaXQOhq7U841PuB0LQ+E24Spx0qA2+P8nxLL+CD7M+zDQCF0wA/fTy9qRjz1GUQcyPxccW6lFZmNOjqbg1vacyo/gIzTUFBFMfvM24eJRR1zR3Aa5XtDUEJqQGV55qUJuQPvsSjU+39msD8syvxHW+RJs0ODU2hHwHrnewrEZY9BNy0A9+/Iic2ar3Xng754fgLh3cOy4LKTvv/rrhTDOmnAsGik05q3DL9quoeyyVEUs3Ed3Qy8VPbYwPY=
+  file: craigmon-$TRAVIS_OS_NAME-$TRAVIS_TAG.tar.gz
+  on:
+    repo: Zhomart/craigmon
