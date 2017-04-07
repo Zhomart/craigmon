@@ -1,9 +1,18 @@
 language: crystal
-dist: trusty
-sudo: required
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+    - os: osx
+      osx_image: xcode8.3
+addons:
+  apt:
+    packages:
+      - libsqlite3-dev
 before_install:
-- sudo apt-get -qq update
-- sudo apt-get install -y libsqlite3-dev
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install sqlite3 ; fi
 install: shards install
 script:
 - crystal spec --verbose
