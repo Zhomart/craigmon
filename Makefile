@@ -19,3 +19,6 @@ prepare:
 
 upload:
 				rsync -azv --exclude=".git" --exclude="bin" --exclude=".shards" --exclude="lib" . $RADDRESS:/tmp/craigmon
+
+tag:
+				git tag `crystal src/parse_version.cr`
