@@ -11,8 +11,8 @@ addons:
     packages:
       - libsqlite3-dev
 before_install:
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install sqlite3 ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update                       ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install sqlite3 crystal-lang ; fi
 install: shards install
 script:
 - crystal spec --verbose
