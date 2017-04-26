@@ -38,7 +38,7 @@ module CraigMon
         started_at = Time.now
         worker.process
         CraigMon.logger.debug "Finished in #{Time.now - started_at}. Sleeping for #{delay_sec} seconds"
-        sleep 5
+        CraigMon.sleep 5
       end
     end
 
@@ -58,7 +58,7 @@ module CraigMon
           puts e.backtrace.join("\n")
           puts
         end
-        sleep @page_delay + rand(7)
+        CraigMon.sleep @page_delay + rand(7)
       end
     end
 
@@ -121,7 +121,7 @@ module CraigMon
         values = rss.craigslist_items
         yield(page, values)
         s += values.size
-        sleep @page_delay + rand(5)
+        CraigMon.sleep @page_delay + rand(5)
       end
     end
 

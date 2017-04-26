@@ -11,6 +11,11 @@ module CraigMon
   def self.logger : Logger
     @@logger.as(Logger)
   end
+
+  def self.sleep(seconds)
+    self.logger.debug "Sleeping for #{seconds} seconds"
+    sleep seconds
+  end
 end
 
 CraigMon.logger = Logger.new(STDOUT)
