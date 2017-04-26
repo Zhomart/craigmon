@@ -11,7 +11,7 @@
             <th width="20px"></th>
             <th width="180px">Name</th>
             <th>URL</th>
-            <th width="110px">Date</th>
+            <th width="140px">Date</th>
             <th width="110px">Crawled</th>
             <th></th>
             <th></th>
@@ -23,7 +23,7 @@
               <i class={ "fa-check-square": active, "fa-square-o": !active, "fa": true } aria-hidden="true"></i>
             </a></td>
             <td><a href="/searches/{ id }/items">{ name }</a></td>
-            <td><a href="{ url }" target="_blank">{ url }</a></td>
+            <td style="word-break: break-all"><a href="{ url }" target="_blank">{ url }</a></td>
             <td>{ moment(created_at).format("MMM Do, H:mm") }</td>
             <td>{ crawled_at ? moment(crawled_at).format("MMM Do, H:mm") : "never" }</td>
             <td><a href="#" class="" onclick= { parent.editSearch }>Edit</a></td>
