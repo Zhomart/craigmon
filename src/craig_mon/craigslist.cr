@@ -9,7 +9,7 @@ module CraigMon
     end
 
     def download
-      CraigMon.logger.warn "Downloading item #{@item_url}"
+      CraigMon.logger.debug "Downloading item #{@item_url}"
       item_url = @item_url.gsub("http://", "https://")
       res = HTTP::Client.get(item_url)
       pictures = [] of String
