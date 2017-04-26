@@ -2,15 +2,34 @@
   var main, app;
 
   function routeSearches(){
-    main.update({view: "searches"})
+    nanoajax.ajax({
+      url:'/api/searches',
+    }, (code, res) => {
+      main.update({view: "searches", viewData: { result: JSON.parse(res) }})
+    });
   }
 
-  function routeSearchItems(searchId){
-    main.update({view: "items"})
+  function routeSearchItems(searchId, page){
+    if (!page) page = 1;
+    nanoajax.ajax({
+      url: '/api/searches/' + searchId + '/items?page=' + page,
+    }, (code, res) => {
+      let result = JSON.parse(res);
+      main.update({view: "items", viewData: { result: result }})
+    });
   }
 
   function routeSearchItem(searchId, itemId){
-    main.update({view: "item"})
+    var params = new URLSearchParams(window.location.search);
+    var parts = window.location.href.split("/");
+    var searchId = parts[parts.indexOf("searches") + 1];
+    var itemId = parts[parts.indexOf("items") + 1];
+    nanoajax.ajax({
+      url: '/api/searches/' + searchId + '/items/' + itemId,
+    }, (code, res) => {
+      let result = JSON.parse(res);
+      main.update({view: "item", viewData: {result: result}})
+    });
   }
 
   function routeNotFound(){

@@ -4,7 +4,7 @@
 
     <div class="columns">
       <div class="column">
-        <a href="/searches/{ item.search_id }/items">Back</a>
+        <a href="#" onClick={ goBack }>Back</a>
 
         <div style="padding-top: 28px" if={ pictures.length > 0 }>
           <p><b><a href="{ item.link }" target="_blank">{ item.title } - ${ item.price }</a></b></p>
@@ -39,28 +39,14 @@
   <script>
     this.mixin(Mixin)
 
-    this.item = {}
-    this.pictures = []
-    this.picture = null
+    let result = this.opts.data.result;
 
-    this.on("mount", () => {
-      var params = new URLSearchParams(window.location.search);
-      var parts = window.location.href.split("/");
-      var searchId = parts[parts.indexOf("searches") + 1];
-      var itemId = parts[parts.indexOf("items") + 1];
-      nanoajax.ajax({
-        url: '/api/searches/' + searchId + '/items/' + itemId,
-      }, (code, res) => {
-        let result = JSON.parse(res);
-        this.setItem(result.item)
-      });
-    })
+    this.item = result.item
+    this.pictures = new String([result.item.picture_urls]).split(", ")
+    this.picture = this.pictures[0]
 
-    setItem(item) {
-      this.item = this.mixinFixItem(item)
-      this.pictures = new String([item.picture_urls]).split(", ")
-      this.picture = this.pictures[0]
-      this.update()
+    goBack(e) {
+      history.back()
     }
 
     setCurrentPicture(e) {

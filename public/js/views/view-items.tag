@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="title uk-heading-primary">Craigslist Monitor</h1>
 
-    <a href="/searches">Back</a>
+    <a href="#" onClick={ goBack }>Back</a>
 
     <div class="search" if={ search }>
       <p><b>Name:</b> { search.name }</p>
@@ -51,43 +51,21 @@
   <script>
     this.mixin(Mixin)
 
-    this.search = null
-    this.items = []
-    this.pagination = {pages: 0, page: 1}
+    let result = this.opts.data.result
+
+    this.search = this.helperFixRecordDates(result.search, ["crawled_at"])
+    this.items = result.items.map(_item => this.mixinFixItem(_item) )
+    this.pagination = {pages: result.pages, page: result.page}
+
+    goBack(e) {
+      history.back()
+    }
 
     openPage(page, e) {
       var params = new URLSearchParams(window.location.search);
       var cpage = params.get("page") || 1;
       if (page != cpage)
         route("/searches/" + this.search.id + "/items?page=" + page);
-    }
-
-    loadData(searchId, page) {
-      if (!page) page = 1;
-      nanoajax.ajax({
-        url: '/api/searches/' + searchId + '/items?page=' + page,
-      }, (code, res) => {
-        let result = JSON.parse(res);
-        this.setItems(result.search, result.items, parseInt(page), result.pages)
-      });
-    }
-
-    route("/searches/*/items", this.loadData);
-    route("/searches/*/items?page=*", this.loadData);
-
-    this.on("mount", () => {
-      var params = new URLSearchParams(window.location.search);
-      var page = params.get("page") || 1;
-      var parts = window.location.href.split("/");
-      var searchId = parts[parts.indexOf("searches") + 1];
-      this.loadData(searchId, page)
-    })
-
-    setItems(search, items, page, pages) {
-      this.search = this.helperFixRecordDates(search, ["crawled_at"])
-      this.items = items.map(_item => this.mixinFixItem(_item) )
-      this.pagination = { page: page, pages: pages };
-      this.update()
     }
 
   </script>

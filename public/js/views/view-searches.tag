@@ -80,7 +80,18 @@
   </div>
 
   <script>
-    this.searches = []
+    let result = this.opts.data.result
+
+    processSearches(searches) {
+      return searches.map(s => {
+        s.crawled_at = s.crawled_at ? new Date(s.crawled_at) : null
+        s.created_at = new Date(s.created_at)
+        s.updated_at = new Date(s.updated_at)
+        return s
+      })
+    }
+
+    this.searches = this.processSearches(result.searches)
     this.searchFormActive = false
     this.searchForm = { name: null, url: null }
     this.searchErrors = { name: null, url: null }
@@ -138,17 +149,6 @@
       })
     }
 
-    setSearches(searches) {
-      this.searches = searches.map(s => {
-        s.crawled_at = s.crawled_at ? new Date(s.crawled_at) : null
-        s.created_at = new Date(s.created_at)
-        s.updated_at = new Date(s.updated_at)
-        return s
-      })
-      this.closeSearchForm(null)
-      this.update()
-    }
-
     setFormErrors(errors) {
       errors.forEach(err => {
         this.searchErrors[err.field] = err.message;
@@ -181,21 +181,15 @@
         body: JSON.stringify(search)
       }, (code, res) => {
         if (code == 200){
-          this.setSearches(JSON.parse(res).searches)
+          this.searches = this.processSearches(JSON.parse(res).searches)
+          this.closeSearchForm(null)
+          this.update()
         } else {
           this.setFormErrors(JSON.parse(res).errors)
         }
         if (callback) callback(code, res);
       })
     }
-
-    this.on("mount", () => {
-      nanoajax.ajax({
-        url:'/api/searches',
-      }, (code, res) => {
-        this.setSearches(JSON.parse(res).searches)
-      });
-    })
   </script>
 
 

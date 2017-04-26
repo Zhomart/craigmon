@@ -80,7 +80,7 @@ module CraigMon
         page = env.params.query["page"]?
         page = page ? page.to_i32 : 1
         items = Models::Item.all_for(search.id, limit: per_page, offset: (page - 1)*per_page)
-        {pages: pages, items: items, search: search}.to_json
+        {pages: pages, page: page, items: items, search: search}.to_json
       end
 
       get "/api/searches/:search_id/items/:id" do |env|
