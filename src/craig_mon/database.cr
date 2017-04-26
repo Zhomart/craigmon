@@ -1,5 +1,4 @@
 module CraigMon::Database
-
   def self.setup
     Crecto::Repo::ADAPTER.get_db.exec "
       CREATE TABLE IF NOT EXISTS searches (
@@ -20,6 +19,7 @@ module CraigMon::Database
         title VARCHAR(255) NOT NULL,
         link VARCHAR(255) NOT NULL,
         description TEXT,
+        attrgroup TEXT,
         date DATETIME NOT NULL,
         issued DATETIME NOT NULL,
         vanished_at DATETIME,
@@ -35,5 +35,4 @@ module CraigMon::Database
 
   def self.finish
   end
-
 end
