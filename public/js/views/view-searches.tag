@@ -73,6 +73,8 @@
         <footer class="modal-card-foot">
           <button type="submit" class="button is-success">Save</button>
           <a class="button" onclick={ closeSearchForm }>Cancel</a>
+          <a class="button is-danger" onclick={ resetSearchButton }>Reset</a>
+          <a class="button is-danger" onclick={ deleteSearchButton }>Delete</a>
         </footer>
       </form>
     </div>
@@ -111,6 +113,18 @@
       if (e) e.preventDefault()
       this.searchFormActive = false
       this.searchErrors = {}
+    }
+
+    resetSearchButton(e) {
+      if (e) e.preventDefault()
+      this.resetSearch(this.searchForm.id)
+      this.closeSearchForm()
+    }
+
+    deleteSearchButton(e) {
+      if (e) e.preventDefault()
+      this.deleteSearch(this.searchForm.id)
+      this.closeSearchForm()
     }
 
     setSearchFormName(e) {
@@ -190,6 +204,38 @@
         if (callback) callback(code, res);
       })
     }
+
+    resetSearch(id, callback = undefined) {
+      nanoajax.ajax({
+        url:'/api/searches/' + id + '/reset',
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" }
+      }, (code, res) => {
+        if (code == 200) {
+          var search = JSON.parse(res).search;
+          var idx = this.searches.findIndex(s => s.id == search.id);
+          this.searches[idx] = search;
+          this.update()
+        }
+        if (callback) callback(code, res)
+      })
+    }
+
+    deleteSearch(id, callback = undefined) {
+      nanoajax.ajax({
+        url:'/api/searches/' + id,
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" }
+      }, (code, res) => {
+        if (code == 200) {
+          this.searches = this.processSearches(JSON.parse(res).searches)
+          this.closeSearchForm(null)
+          this.update()
+        }
+        if (callback) callback(code, res)
+      })
+    }
+
   </script>
 
 

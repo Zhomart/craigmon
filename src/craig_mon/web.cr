@@ -71,6 +71,28 @@ module CraigMon
         end
       end
 
+      patch "/api/searches/:id/reset" do |env|
+        env.response.content_type = "application/json"
+        search = Repo.get(Search, env.params.url["id"]).as(Search)
+        search.crawled_at = nil
+        Repo.delete_all(Item, Q.where(search_id: search.id))
+        searchChange = Repo.update(search)
+        if searchChange.errors.empty?
+          {search: searchChange.instance}.to_json
+        else
+          env.response.status_code = 400
+          message = searchChange.errors.map { |e| "#{e[:field]} #{e[:message]}" }
+          {errors: searchChange.errors, message: message}.to_json
+        end
+      end
+
+      delete "/api/searches/:id" do |env|
+        env.response.content_type = "application/json"
+        Repo.delete_all(Item, Q.where(search_id: env.params.url["id"]))
+        Repo.delete_all(Search, Q.where(id: env.params.url["id"]))
+        {searches: all_searches()}.to_json
+      end
+
       get "/api/searches/:search_id/items" do |env|
         env.response.content_type = "application/json"
         search = Repo.get(Search, env.params.url["search_id"]).as(Search)

@@ -8,14 +8,15 @@ module CraigMon
     alias Search = Models::Search
     alias Item = Models::Item
 
-
-    def self.run()
+    def self.run
       delay = 30
+      page_delay = 4
       max_pages = 10
 
       OptionParser.parse! do |parser|
         parser.banner = "Usage: craigmon worker [arguments]"
         parser.on("-d DELAY", "--delay=DELAY", "delay/sleep in minutes, default is #{delay}") { |v| delay = v.to_i32 }
+        parser.on("--page-delay=DELAY", "delay/sleep in seconds, default is #{page_delay}") { |v| page_delay = v.to_i32 }
         parser.on("-m PAGES", "--pages=PAGES", "max pages to crawl, default is #{max_pages}") { |v| max_pages = v.to_i32 }
         parser.on("--debug", "debug mode") { CraigMon.logger.level = Logger::DEBUG }
         parser.on("-q", "--quiet", "quiet mode") { CraigMon.logger.level = Logger::WARN }
@@ -32,16 +33,16 @@ module CraigMon
       CraigMon.logger.info "  delay_sec=#{delay_sec}"
       CraigMon.logger.info "  max_pages=#{max_pages}"
 
-      worker = self.new(max_pages, delay_sec)
+      worker = self.new(max_pages, delay_sec, page_delay)
       loop do
         started_at = Time.now
-        worker.process()
+        worker.process
         CraigMon.logger.debug "Finished in #{Time.now - started_at}. Sleeping for #{delay_sec} seconds"
         sleep 5
       end
     end
 
-    def initialize(@max_pages : Int32, @delay_sec : Int32)
+    def initialize(@max_pages : Int32, @delay_sec : Int32, @page_delay : Int32)
     end
 
     def process
@@ -57,7 +58,7 @@ module CraigMon
           puts e.backtrace.join("\n")
           puts
         end
-        sleep 3 + rand(7)
+        sleep @page_delay + rand(7)
       end
     end
 
@@ -80,13 +81,16 @@ module CraigMon
           uid = Int64.new(value["id"])
           if item = Item.find_by?(uid: uid)
             if item.vanished_at
-              Repo.update_all(Item, Q.where(uid: uid), { vanished_at: nil })
+              Repo.update_all(Item, Q.where(uid: uid), {vanished_at: nil})
             end
             vanished.delete(uid)
           else
+            cl = Craigslist.new(value["link"])
             item = Item.from_rss(value)
             item.search_id = search.id
-            item.picture_urls = Craigslist.get_pictures(value["link"]).join(", ") if value["link"]?
+            item.picture_urls = cl.pictures.join(", ")
+            item.description = cl.description
+            item.attrgroup = cl.attrgroup
             Repo.insert(item)
           end
         end
@@ -101,7 +105,7 @@ module CraigMon
       vanished_count = 0
       vanished.each do |uid|
         query = Crecto::Repo::Query.where(uid: uid).where(vanished_at: nil)
-        vanished_count += Crecto::Repo.update_all(Models::Item, query, { vanished_at: now }).as(DB::ExecResult).rows_affected
+        vanished_count += Crecto::Repo.update_all(Models::Item, query, {vanished_at: now}).as(DB::ExecResult).rows_affected
       end
 
       CraigMon.logger.debug "new vanished uids #{vanished_count}"
@@ -117,13 +121,12 @@ module CraigMon
         values = rss.craigslist_items
         yield(page, values)
         s += values.size
-        sleep 5 + rand(10)
+        sleep @page_delay + rand(5)
       end
     end
 
     private def when_http_error(response)
       CraigMon.logger.warn "http get error, code=#{response.status_code}"
     end
-
   end
 end

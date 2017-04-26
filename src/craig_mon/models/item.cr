@@ -7,6 +7,7 @@ module CraigMon::Models
       field :title, String
       field :link, String
       field :description, String
+      field :attrgroup, String
       field :date, Time
       field :issued, Time
       field :vanished_at, Time
@@ -19,7 +20,7 @@ module CraigMon::Models
 
     #
     # ```
-    #   Item.find_by?(uid: 12345)
+    # Item.find_by?(uid: 12345)
     # ```
     def self.find_by?(**wheres) : Item?
       all = Repo.all(self, Repo::Query.where(**wheres))
@@ -51,6 +52,5 @@ module CraigMon::Models
       end
       item
     end
-
   end
 end

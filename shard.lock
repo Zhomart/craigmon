@@ -10,7 +10,7 @@ shards:
 
   db:
     github: crystal-lang/crystal-db
-    version: 0.4.0
+    version: 0.4.2
 
   faker:
     github: askn/faker
@@ -18,7 +18,7 @@ shards:
 
   kemal:
     github: kemalcr/kemal
-    commit: f1edf81d95f0c38628cabce6871681faf4d83de5
+    commit: 0b4856b7417592743a27fc3e30867fd141395bf6
 
   kemal-basic-auth:
     github: kemalcr/kemal-basic-auth
@@ -34,7 +34,7 @@ shards:
 
   sentry:
     github: samueleaton/sentry
-    commit: 9f14238a5acc2582c0c48958199dc49e00b651b3
+    commit: 7150da037d7e0267c156336194aa346922ec962b
 
   sqlite3:
     github: Zhomart/crystal-sqlite3
